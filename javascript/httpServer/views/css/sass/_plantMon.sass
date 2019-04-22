@@ -1,0 +1,323 @@
+// Global Color
+$lightColor: #fee54e
+$soilColor: #4bc8ff
+$temperatureCh1Color: #ff904e
+
+/**
+  * Hidden button
+  */
+.refreshButton
+  position: fixed
+  z-index: 10
+  left: 0px
+  bottom: 0px
+  width: 30px
+  height: 30px
+  color: transparent
+  background: transparent
+  opacity: 0
+
+/**
+  * Page - Plant
+  */
+.page-plant
+  .main-footer .copyright
+    color: #1db158
+    opacity: 0.6
+
+.plantMon
+  .bg-overlay
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: #4a4a4a
+    opacity: 0.7
+
+  .col
+    height: calc(100vh - 64px - 35px)
+    min-height: calc(480px - 64px - 35px)
+    max-height: 800px
+    padding-top: 15px
+    display: flex
+
+  .box
+    display: flex
+    flex-direction: column
+    width: 100%
+    height: 100%
+
+  img
+    width: 100%
+    height: 100%
+
+  .gauge-wrap
+    position: relative
+    display: flex
+    height: 70%
+    padding: 15px
+
+  .graphic
+    width: 100%
+    height: 100%
+
+  .icon-wrap
+    position: absolute
+    top: 0
+    left: 0
+    width: 54px
+    height: 54p
+
+  .icon-arrow
+    position: absolute
+    top: 12px
+    right: 2px
+    width: 33px
+    height: 31px
+
+  .alert-wrap
+    position: absolute
+    bottom: 0
+    left: 11px
+    font-size: 18px
+    display: flex
+
+    svg
+      width: 29px
+      height: 29px
+
+    .text
+      padding-top: 6px
+      margin-bottom: 0
+
+  .chart-wrap
+    display: flex
+    position: relative
+    height: 300px
+
+    .graphic
+      position: absolute
+
+/* ============================
+ * Range input
+ * ========================= */
+.plantMon
+  .range-wrap
+    position: absolute
+    bottom: 42px
+    left: 10px
+    width: 30px
+    height: calc(100% - 120px)
+    display: none
+
+    .meter
+      position: absolute
+      bottom: 0
+      left: 50%
+      width: 4px
+      height: 50%
+      transform: translate(-50%, 0)
+      border-radius: 2px
+
+    .backdrop-meter
+      position: absolute
+      bottom: 0
+      left: 50%
+      width: 4px
+      height: 100%
+      transform: translate(-50%, 0)
+      border-radius: 2px
+      background: #827c7c
+
+  [type=range]
+    position: absolute
+    bottom: 50%
+    left: 50%
+    width: 240px
+    height: 8px
+    transform: translate(-50%, -50%) rotate(-90deg)
+    background: transparent
+
+    &, &::-webkit-slider-thumb
+      -webkit-appearance: none
+      outline: none
+
+
+    &::-webkit-slider-runnable-track
+      height: 0.25em
+      background: transparent
+
+    &::-moz-range-track
+      height: 0.25em
+      background: transparent
+
+    &::-ms-track
+      height: 0.25em
+      background: transparent
+
+    &::-webkit-slider-thumb
+      margin-top: -0.625em
+      width: 1.5em
+      height: 1.5em
+      border-radius: 50%
+
+    &::-moz-range-thumb
+      width: 1.5em
+      height: 1.5em
+      border-radius: 50%
+
+    &::-ms-thumb
+      margin-top: 0
+      width: 1.5em
+      height: 1.5em
+      border-radius: 50%
+
+    &::-ms-tooltip
+      display: none
+
+/* ============================
+ * Alert plants
+ * ========================= */
+$plants_alerts_object: box-light $lightColor, box-soil $soilColor, box-temperatureCh1 $temperatureCh1Color
+@each $object in $plants_alerts_object
+  $color: nth($object, 2)
+  .plantMon .#{nth($object, 1)}
+    .icon-arrow svg path,
+    .alert-wrap svg path:nth-child(2)
+      fill: $color
+
+    .alert-wrap
+      color: $color
+      opacity: 0.5
+
+    .range-wrap .meter
+      background: $color
+
+    [type=range]
+      &::-webkit-slider-thumb
+        background: $color
+
+      &::-moz-range-thumb
+        background: $color
+
+      &::-ms-thumb
+        background: $color
+
+
+.plantMon .box-soil .icon-wrap
+  .ok
+    display: inline
+
+  .plus
+    display: none
+
+.plantMon.alert-box-soil .box-soil .icon-wrap
+  .ok
+    display: none
+
+  .plus
+    display: inline
+
+/* ============================
+ * Global alert state
+ * ========================= */
+.plantMon
+  .opacityExtend
+    opacity: 1
+    transition: opacity 150ms ease-in-out
+
+  .icon-wrap
+    @extend .opacityExtend
+
+  .gauge-wrap .graphic
+    @extend .opacityExtend
+
+  .alert-wrap
+    @extend .opacityExtend
+
+  .chart-wrap
+    @extend .opacityExtend
+
+  .icon-arrow
+    opacity: 0
+    transition: opacity 150ms ease-in-out
+
+.plantMon
+  &.alert-box-light,
+  &.alert-box-soil,
+  &.alert-box-temperatureCh1
+    .opacityExtend
+      opacity:  0.15
+      transition: opacity 150ms ease-in-out
+
+    .icon-wrap
+      @extend .opacityExtend
+
+    .gauge-wrap .graphic
+      @extend .opacityExtend
+
+    .alert-wrap
+      @extend .opacityExtend
+
+    .chart-wrap
+      @extend .opacityExtend
+
+.plantMon
+  &.alert-box-light .box-light,
+  &.alert-box-soil .box-soil,
+  &.alert-box-temperatureCh1 .box-temperatureCh1
+    .opacityExtend
+      opacity:  1
+      transition: opacity 150ms ease-in-out
+
+    .icon-wrap
+      @extend .opacityExtend
+
+    .gauge-wrap .graphic
+      @extend .opacityExtend
+
+    .alert-wrap
+      @extend .opacityExtend
+
+    .chart-wrap
+      @extend .opacityExtend
+
+    .icon-arrow
+      @extend .opacityExtend
+
+.plantMon
+  &.alert-setting,
+  &.alert-setting.alert-box-light .box-light,
+  &.alert-setting.alert-box-soil .box-soil,
+  &.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1
+    .trans
+      transition: opacity 150ms ease-in-out
+
+    .icon-wrap
+      opacity: 1
+      @extend .trans
+
+    .gauge-wrap .graphic
+      opacity: 0.15
+      @extend .trans
+
+    .alert-wrap
+      opacity: 1
+      @extend .trans
+
+    .chart-wrap
+      opacity: 0.15
+      @extend .trans
+
+    .icon-arrow
+      opacity: 0.15
+      @extend .trans
+
+  &.alert-setting
+    .range-wrap
+      display: block
+
+    .icon-arrow
+      opacity: 0
+      @extend .trans

@@ -1,0 +1,21 @@
+<!-- Floating Icon menu -->
+<a class="btn-fixed" href="{{fullHostUrl}}/monitor">
+    <picture><img src="/assets/icons/ic-view-quilt-white.svg" alt="Icon View Collection" width="30px" height="30px"></picture>
+</a>
+
+<div id="main" class="container"></div>
+
+
+<!-- Javascript: Loading class and initialize when page load-->
+<script type="text/javascript" src="/js/aggregatePage.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        const page = new AggregatePage(document.querySelector('#main') , '{{routeName}}');
+        {{#if_eq routeName 'aggregator'}}
+            page.start('{{fullSwimUrl}}');
+        {{/if_eq}}
+        {{#if_not_eq routeName 'aggregator'}}
+            page.start('{{aggregateSwimUrl}}');
+        {{/if_not_eq}}
+    }, false);
+</script>

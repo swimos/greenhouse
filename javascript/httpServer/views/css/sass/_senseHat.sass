@@ -1,0 +1,146 @@
+/**
+  * Page - SenseHat
+  */
+
+$white: #fff
+$black: #000
+$color1: #1db158 // green
+$color2: #45b4e5 // blue
+
+$bgColor: #f7f7f7 // light gray
+
+.main.senseHat
+
+  .backdrop
+    background: #fff
+    padding: 15px 15px 15px 15px
+
+  .subnav
+    display: flex
+    padding-bottom: 7.5px
+    justify-content: space-between
+
+    .icon
+      display: flex
+
+    .title, .plant
+      display: flex
+      align-items: center
+
+    img, svg
+      margin-right: 15px
+
+    h2
+      margin-bottom: 0
+
+    svg path
+      fill: $color1
+
+      span
+        font-weight: normal
+
+    .plant
+      font-weight: normal
+
+    .title h2, .plant span
+      color: $color1
+      font-size: 20px
+
+  .kpi, .chart
+    padding-right: 7.5px
+    padding-left: 7.5px
+
+    .col
+      padding: 7.5px
+
+    .wrap
+      position: relative
+      padding-top: 40%
+      color: $white
+      background: $color1
+      border-radius: 8px
+      overflow: hidden
+
+    .box
+      display: flex
+      flex-direction: column
+      position: absolute
+      z-index: 2
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      padding: 4px 8px
+
+    header
+      display: flex
+      justify-content: space-between
+
+      .title
+        font-size: 16px
+        font-weight: normal
+
+      .device
+        font-size: 14px
+        font-weight: light
+
+  .kpi
+    .bubbles
+      position: absolute
+      z-index: 1
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: url('/assets/images/bubbles.svg') repeat center center
+      opacity: 0
+
+    .value
+      display: flex
+      flex-grow: 1
+      align-items: center
+      justify-content: center
+      font-size: 40px
+
+    .graphic
+      height: 30%
+
+  .chart
+    .wrap
+      padding-top: 100%
+      color: $color1
+      background: $bgColor
+
+    .box
+      padding: 0
+
+    header
+      padding: 4px 8px 0 8px
+
+    .axis
+      margin: 0 0 10px 0
+      padding: 0 8px
+      text-align: right
+      font-weight: normal
+
+    .graphic
+      display: flex
+      flex-grow: 1
+      margin: 10% 0
+
+  .subnav.watering
+    svg path
+      fill: $color2
+
+    .title h2, .plant span
+      color: $color2
+
+  .kpi.watering
+    background-image: radial-gradient(circle at 50% 39%, rgb(130, 230, 255), rgb(75, 200, 255))
+
+    .bubbles
+      opacity: 1
+
+  .chart.watering
+    .title, .device
+      color: $color2

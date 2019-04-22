@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Runs at the end of git flow release finish
+#
+# Positional arguments:
+# $1    The version (including the version prefix)
+# $2    The origin remote
+# $3    The full branch name (including the release prefix)
+#
+
+VERSION=$1
+ORIGIN=$2
+BRANCH=$3
+
+fromGradle() {
+  echo $(gradle properties | grep $1 | cut -d: -f2)
+}
+
+version=$(fromGradle swim.version)
+git checkout $DEVELOP_BRANCH
+
+echo "starting release finish script on  $version/$VERSION from $ORIGIN to $BRANCH"
+
+find . -name gradle.properties -type f -not -path "*build*" \
+  -exec sed -i '' -e "s/swim.version=${version}$/swim.version=${VERSION}-SNAPSHOT/g" {} \; 2>/dev/null
+git commit -a -m "snapshot: $VERSION-SNAPSHOT"
+git push origin $DEVELOP_BRANCH
+
+#git checkout $BRANCH
+
+echo "finished release finish script on  $version/$VERSION from $ORIGIN to $BRANCH "
+
+# To terminate the git-flow action, return a non-zero exit code.
+exit 0

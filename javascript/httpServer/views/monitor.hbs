@@ -1,0 +1,174 @@
+<!-- Floating Icon menu -->
+<a class="btn-fixed" href="{{aggregateHostUrl}}/aggregate">
+    <picture><img src="/assets/icons/ic-view-collection-white.svg" alt="Icon View Collection" width="30px" height="30px"></picture>
+</a>
+
+<main class="main monitor container-fluid">
+    <div class="row">
+        <div class="col col-12 col-lg-6 column-1">
+
+            <div class="row">
+                <div class="col col-12">
+                    <article class="wrap chart chart-1">
+                        <div class="box">
+                            <div class="content">
+                                <header><h2 class="title">Light (lx)</h2> <span class="device">ALL PLANTS</span></header>
+                                <div class="graphic"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12">
+                    <article class="wrap chart chart-2">
+                        <div class="box">
+                            <div class="content">
+                                <header><h2 class="title">Moisture (%)</h2> <span class="device">ALL PLANTS</span></header>
+                                <div class="graphic"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+        <div class="col col-12 col-lg-6 column-1">
+
+            <div class="row">
+                <div class="col col-12 col-md-6">
+                    <article class="wrap kpi kpi-1">
+                        <div class="box">
+                            <div class="content">
+                                <header><h2 class="title">Message</h2> <span class="device">ALL PLANTS</span></header>
+                                <div class="graphic">
+                                    <span class="value">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12 col-md-6">
+                    <article class="wrap kpi kpi-2">
+                        <div class="box">
+                            <div class="content">
+                                <header><h2 class="title">Alert</h2> <span class="device">ALL PLANTS</span></header>
+                                <div class="graphic">
+                                    <span class="value">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12">
+                    <article class="wrap chart chart-3">
+                        <div class="box">
+                            <div class="content">
+                                <header><h2 class="title">Temp (°)</h2> <span class="device">ALL PLANTS</span></header>
+                                <div class="graphic"></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Javascript: Loading class and initialize when page load-->
+<script type="text/javascript">
+    class Chart {
+        constructor(host, type, element, color) {
+            this._host = host;
+            this._type = type;
+            this._nodeRef = swim.nodeRef(this._host, '/aggregate');
+            this._color = swim.Color.parse(color).alpha(0.75)
+            this._link = null;
+
+            this._canvas = new swim.HtmlAppView(document.querySelector(`.${element} .graphic`)).append("canvas");
+            this._chart = new swim.ChartView()
+                .bottomAxis("time")
+                .leftAxis("linear")
+                .leftDomainPadding([0.1, 0.1])
+                .domainColor(swim.Color.parse('#4a4a4a').alpha(0))
+                .tickMarkColor(swim.Color.parse('#4a4a4a').alpha(0))
+                .font("12px sans-serif")
+                .textColor(swim.Color.parse('#4a4a4a').alpha(0))
+                .topGutter(0)
+                .rightGutter(0)
+                .bottomGutter(-5)
+                .leftGutter(0);
+            this._canvas.append(this._chart);
+
+            this._plot = new swim.AreaGraphView()
+                .fill(this._color);
+            this._chart.addPlot(this._plot);
+
+            this.connect();
+        }
+
+        connect() {
+            this._link = this._nodeRef.downlinkMap().laneUri(`avg/${this._type}`)
+                .didUpdate(this.addPoint.bind(this))
+                .didRemove(this.remvoePoint.bind(this))
+                .didDrop(this.dropPoint.bind(this))
+                .open();
+        }
+
+        addPoint(k, v) {
+            this._plot.insertDatum({x: k.numberValue(), y: Math.round(v.numberValue()/10) || 0, y2: 0});
+        }
+
+        remvoePoint(k, v) {
+            // TODO: change drop to remove
+        }
+
+        dropPoint(v) {
+            // TODO: Change to remove
+        }
+    }
+
+    // different time in second
+    function diffTime(dt2, dt1) {
+        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+        return Math.abs(Math.round(diff));
+    }
+
+    const host = '{{fullSwimUrl}}';
+    // const host = 'ws://192.168.0.210:5620'; // TESTING
+    const light = new Chart(host, 'light', 'chart-1', '#fee54e');
+    const soil = new Chart(host, 'soil', 'chart-2', '#4bc8ff');
+    const temp = new Chart(host, 'temp', 'chart-3', '#ff904e');
+
+    const kpi1 = new swim.HtmlAppView(document.querySelector(`.kpi-1 .value`));
+    let oldMsgCount = null;
+    let oldTime = null;
+    swim.downlinkValue().hostUri(host).nodeUri('swim:meta:mesh').laneUri('linkStats')
+        .didSet((v)=> {
+            const downMessageCount = v.get('downMessageCount').numberValue();
+            let rate = 0;
+            if(oldMsgCount && oldTime) {
+                // Rate formula - (oldValue - newValue) / abs( round((oldTime - newTime) / 1000 ) )
+                rate = (downMessageCount - oldMsgCount) / diffTime(oldTime, new Date() );
+            }
+
+            oldMsgCount = downMessageCount;
+            oldTime = new Date();
+
+            kpi1.text(`${Math.round(rate)}`)
+        }).open();
+
+    const kpi2 = new swim.HtmlAppView(document.querySelector(`.kpi-2 .value`));
+    swim.downlinkValue().hostUri(host).nodeUri('/aggregate').laneUri('totalAlert')
+        .didSet((v)=> {
+            kpi2.text(`${v.numberValue() || 0}`)
+        }).open();
+
+</script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        // const page = new AggregatePage(document.getElementById('main'), '{{routeName}}');
+        const page = new BasePage(document.querySelector('#main') , '{{routeName}}');
+        page.start('{{fullSwimUrl}}');
+    }, false);
+</script>

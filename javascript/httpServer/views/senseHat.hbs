@@ -1,0 +1,353 @@
+<main class="main senseHat container-fluid">
+    <div class="backdrop">
+
+        <div class="subnav">
+            <div class="title">
+                <a class="btn-back" href="{{aggregateHostUrl}}/aggregate">
+                    <img src="/assets/icons/back-arrow-black.svg" alt="Icon back arrow">
+                </a>
+                <picture class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="20" viewBox="0 0 35 20">
+                        <path fill="#2b8e52" fill-rule="nonzero" d="M30.652 4.375c.746.935 1.166 2.124 1.166 3.62h1.591S35 8.59 35 9.327v4c0 .736-.712 1.333-1.59 1.333h-1.592v5.333H3.182v-5.333H1.59C.712 14.661 0 14.064 0 13.328v-4c0-.737.712-1.334 1.59-1.334h1.592c0-1.518.432-2.72 1.2-3.661L2.298 2.249A1.333 1.333 0 1 1 4.184.363l2.33 2.33c2.009-.996 4.764-1.365 7.804-1.365h6.364c3.066 0 5.842.375 7.856 1.39L30.893.364a1.333 1.333 0 0 1 1.885 1.886l-2.126 2.126zM9.423 9.328v4h4.039v-4H9.423zm12.115 0v4h4.039v-4h-4.039z"/>
+                    </svg>
+                </picture>
+                <h2>{{{botName}}}</h2>
+            </div>
+            <div class="plant">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="21" viewBox="0 0 27 21">
+                    <path fill-rule="nonzero" d="M8.5 16.3L2.2 10 .1 12.1l8.4 8.4 18-18L24.4.4z"/>
+                </svg>
+                <span>--</span>
+            </div>
+        </div>
+
+        <div class="kpi container-fluid">
+            <div class="row">
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap kpi kpi-1">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">Temp</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <div class="value">--°C</div>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap kpi kpi-2">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">Pres</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <div class="value">--mb</div>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap kpi kpi-3">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">RH</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <div class="value">--%</div>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart container-fluid">
+            <div class="row">
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap chart chart-1">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">Compass</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <ul class="axis">
+                                <li>X: <span>--</span></li>
+                                <li>Y: <span>--</span></li>
+                                <li>Z: <span>--</span></li>
+                            </ul>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap chart chart-2">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">Gyro</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <ul class="axis">
+                                <li>X: <span>--</span></li>
+                                <li>Y: <span>--</span></li>
+                                <li>Z: <span>--</span></li>
+                            </ul>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col col-12 col-lg-4">
+                    <article class="wrap chart chart-3">
+                        <div class="bubbles"></div>
+                        <div class="box">
+                            <header>
+                                <h3 class="title">Acceleration</h3>
+                                <span class="device">{{{botName}}}</span>
+                            </header>
+                            <ul class="axis">
+                                <li>X: <span>--</span></li>
+                                <li>Y: <span>--</span></li>
+                                <li>Z: <span>--</span></li>
+                            </ul>
+                            <div class="graphic"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script type="text/javascript">
+    class Kpi {
+        constructor(host, type, element, unit) {
+            this._host = host;
+            this._type = type;
+            this._unit = unit;
+            this._nodeRef = swim.nodeRef(this._host, `/sensor/${this._type}`);
+
+            this._valueLink = null;
+            this._chartLink = null;
+
+            this._wrap = new swim.HtmlAppView(document.querySelector(`.${element}`));
+
+            this._bubbles = new swim.HtmlAppView(document.querySelector(`.${element} .bubbles`));
+
+            this._valueElement = new swim.HtmlAppView(document.querySelector(`.${element} .value`));
+
+            this._canvas = new swim.HtmlAppView(document.querySelector(`.${element} .graphic`)).append('canvas');
+            this._chart = new swim.ChartView()
+                .bottomAxis("time")
+                .leftAxis("linear")
+                .leftDomainPadding([0.1, 0.1])
+                .domainColor(swim.Color.parse('#afafaf').alpha(0))
+                .tickMarkColor(swim.Color.parse('#afafaf').alpha(0))
+                .font("12px sans-serif")
+                .textColor(swim.Color.parse('#afafaf').alpha(0))
+                .topGutter(0)
+                .rightGutter(0)
+                .bottomGutter(0)
+                .leftGutter(0);
+            this._canvas.append(this._chart);
+
+            this._plot = new swim.LineGraphView()
+                .stroke("#fff")
+                .strokeWidth(1);
+            this._chart.addPlot(this._plot);
+
+            this.connect();
+        }
+
+        watering(value) {
+            (value)? this._wrap.addClass('watering') : this._wrap.removeClass('watering');
+        }
+
+        connect() {
+            this._valueLink = this._nodeRef.downlinkValue().laneUri('latest')
+                .didSet((v)=> {
+                    this._valueElement.text(`${Math.round(v.numberValue()) || 0}${this._unit}`)
+                }).open();
+
+            this._chartLink = this._nodeRef.downlinkMap().laneUri('shortHistory')
+                .didUpdate(this.addPoint.bind(this))
+                .didRemove(this.removePoint.bind(this))
+                .open();
+        }
+
+        addPoint(k, v) {
+            this._plot.insertDatum({x: k.numberValue(), y: v.numberValue()});
+        }
+
+        removePoint(k, v) {
+            // TODO: change drop to remove
+            this._plot.removeDatum(k.value);
+        }
+
+    }
+
+    class Chart {
+        constructor(host, type, element) {
+            this._host = host;
+            this._type = type;
+
+            this._nodeRefX = swim.nodeRef(host, `/sensor/${type}X`);
+            this._nodeRefY = swim.nodeRef(host, `/sensor/${type}Y`);
+            this._nodeRefZ = swim.nodeRef(host, `/sensor/${type}Z`);
+
+            this._linkXValue = null;
+            this._linkYValue = null;
+            this._linkZValue = null;
+            this._linkXChart = null;
+            this._linkYChart = null;
+            this._linkZChart = null;
+
+            this._app = new swim.HtmlAppView(document.querySelector(`.${element}`));
+
+            const li = document.querySelectorAll(`.${element} ul li`);
+            this._X = new swim.HtmlAppView(li[0]);
+            this._XValue = new swim.HtmlAppView(li[0].querySelector('span'));
+            this._Y = new swim.HtmlAppView(li[1]);
+            this._YValue = new swim.HtmlAppView(li[1].querySelector('span'));
+            this._Z = new swim.HtmlAppView(li[2]);
+            this._ZValue = new swim.HtmlAppView(li[2].querySelector('span'));
+
+            this._canvas = new swim.HtmlAppView(document.querySelector(`.${element} .graphic`)).append('canvas');
+            this._chart = new swim.ChartView()
+                .bottomAxis("time")
+                .leftAxis("linear")
+                .leftDomainPadding([0.1, 0.1])
+                .domainColor(swim.Color.parse('#afafaf').alpha(0))
+                .tickMarkColor(swim.Color.parse('#afafaf').alpha(0))
+                .font("12px sans-serif")
+                .textColor(swim.Color.parse('#afafaf').alpha(0))
+                .topGutter(0)
+                .rightGutter(0)
+                .bottomGutter(0)
+                .leftGutter(0);
+            this._canvas.append(this._chart);
+
+            this._plotX = new swim.LineGraphView()
+                .stroke("#fff")
+                .strokeWidth(1);
+            this._chart.addPlot(this._plotX);
+
+            this._plotY = new swim.LineGraphView()
+                .stroke("#fff")
+                .strokeWidth(1);
+            this._chart.addPlot(this._plotY);
+
+            this._plotZ = new swim.LineGraphView()
+                .stroke("#fff")
+                .strokeWidth(1);
+            this._chart.addPlot(this._plotZ);
+
+            this.watering();
+            this.connect();
+        }
+
+        watering(value) {
+            const greenArray = [swim.Color.parse('#00df59'), swim.Color.parse('#1db158'), swim.Color.parse('#2b8e52')];
+            const blueArray = [swim.Color.parse('#4bc8ff'), swim.Color.parse('#43a6d2'), swim.Color.parse('#3381a3')];
+            if(value) {
+                this._app.addClass('watering');
+                this._X.color(blueArray[0]);
+                this._Y.color(blueArray[1]);
+                this._Z.color(blueArray[2]);
+                this._plotX.stroke(blueArray[0]);
+                this._plotY.stroke(blueArray[1]);
+                this._plotZ.stroke(blueArray[2]);
+            } else {
+                this._app.removeClass('watering');
+                this._X.color(greenArray[0]);
+                this._Y.color(greenArray[1]);
+                this._Z.color(greenArray[2]);
+                this._plotX.stroke(greenArray[0]);
+                this._plotY.stroke(greenArray[1]);
+                this._plotZ.stroke(greenArray[2]);
+            }
+        }
+
+        connect() {
+            this._linkXValue = this._nodeRefX.downlinkValue().laneUri('latest')
+                .didSet((v)=> {
+                    this._XValue.text(`${v.numberValue()}`);
+                }).open();
+
+            this._linkYValue = this._nodeRefY.downlinkValue().laneUri('latest')
+                .didSet((v)=> {
+                    this._YValue.text(`${v.numberValue()}`);
+                }).open();
+
+            this._linkZValue = this._nodeRefZ.downlinkValue().laneUri('latest')
+                .didSet((v)=> {
+                    this._ZValue.text(`${v.numberValue()}`);
+                }).open();
+
+            this._linkXChart = this._nodeRefX.downlinkMap().laneUri('shortHistory')
+                .didUpdate((k, v)=> {
+                    this._plotX.insertDatum({x: k.numberValue(), y: v.numberValue()});
+                })
+                .didRemove((k, v)=> {
+                    this._plotX.removeDatum(k.value);
+                }).open();
+
+            this._linkYChart = this._nodeRefY.downlinkMap().laneUri('shortHistory')
+                .didUpdate((k, v)=> {
+                    this._plotY.insertDatum({x: k.numberValue(), y: v.numberValue()});
+                })
+                .didRemove((k, v)=> {
+                    this._plotY.removeDatum(k.value);
+                }).open();
+
+            this._linkZChart = this._nodeRefZ.downlinkMap().laneUri('shortHistory')
+                .didUpdate((k, v)=> {
+                    this._plotZ.insertDatum({x: k.numberValue(), y: v.numberValue()});
+                }).didRemove((k, v)=> {
+                    this._plotZ.removeDatum(k.value);
+                }).open();
+
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        const host = '{{fullSwimUrl}}';
+        // const host = 'ws://192.168.0.208:5620'; // TESTING
+        const subnav = document.querySelector('.subnav');
+        const plant = document.querySelector('.subnav .plant span');
+        const tempKpi = new Kpi(host, 'temperature', 'kpi-1', '°C');
+        const pressureKpi = new Kpi(host, 'pressure', 'kpi-2', 'mb');
+        const humidityKpi = new Kpi(host, 'humidity', 'kpi-3', '%');
+
+        const compassChart = new Chart(host, 'compass', 'chart-1');
+        const gyroChart = new Chart(host, 'gyro', 'chart-2');
+        const accelerationChart = new Chart(host, 'acceleration', 'chart-3');
+
+        swim.downlinkValue().hostUri(host).nodeUri('/bot/{{botName}}').laneUri('plantName')
+            .didSet((v)=> {
+                const isWatering = (v.stringValue())? true : false;
+                plant.innerHTML = (v.stringValue())? v.stringValue() : 'Idle';
+                (isWatering)? subnav.classList.add('watering') : subnav.classList.remove('watering');
+                const arr = [tempKpi, pressureKpi, humidityKpi, compassChart, gyroChart, accelerationChart];
+                arr.forEach((item)=> {
+                    item.watering(isWatering)
+                });
+            }).open();
+    }, false);
+</script>
+
+<!-- Javascript: Loading class and initialize when page load-->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        // const page = new AggregatePage(document.getElementById('main'), '{{routeName}}');
+        const page = new BasePage(document.querySelector('#main') , '{{routeName}}');
+        // const page = new BasePage(document.querySelector('#main') , 'ws://192.168.0.205:5620');
+        page.start('{{aggregateSwimUrl}}');
+        // page.start('ws://192.168.0.210:5620');
+    }, false);
+</script>

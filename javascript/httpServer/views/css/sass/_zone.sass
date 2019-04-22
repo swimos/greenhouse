@@ -1,0 +1,75 @@
+.main.zone
+
+  & .row
+    padding: 5px 10px
+
+    & .col
+      padding: 5px
+
+  .device-wrap
+    padding-top: 0
+    padding-bototm: 0
+
+    & > .col, & > .col > .row
+      padding-top: 0
+      padding-bottom: 0
+
+  .wrap
+    position: relative
+    background: rgba(#4a4a4a, 0.6)
+    border-radius: 8px
+
+  .kpi .wrap
+    padding-top: 98%
+
+    +media('on-sm-down')
+      padding-top: 50%
+
+  .chart .wrap
+    padding-top: 48%
+
+  h2
+    margin-top: 15px
+    text-transform: none
+    line-height: 1
+
+  .box
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    color: #2b8e52
+
+  header
+    display: flex
+    justify-content: space-between
+    padding: 4px 8px
+
+    h3
+      font-size: 16px
+      font-weight: normal
+
+    span
+      font-size: 14px
+
+  .graphic
+    display: flex
+    flex-grow: 1
+
+  .kpi .graphic
+    justify-content: center
+    align-items: center
+    font-size: 40px
+    margin-bottom: 30px
+
+  .chart-1 h3
+    color: #fee54e
+
+  .chart-2 h3
+    color: #4bc8ff
+
+  .chart-3 h3
+    color: #ff904e

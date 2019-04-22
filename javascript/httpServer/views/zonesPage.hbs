@@ -1,0 +1,21 @@
+<main id="mainContainer" class="main zone container-fluid"></main>
+
+<script type="text/javascript">
+    // const host = '{{fullSwimUrl}}';
+    const host = 'ws://192.168.0.210:5620';
+    const nodeRef = swim.nodeRef(host, '/zone');
+
+    nodeRef.downlinkMap().laneUri('join/latest')
+        .didUpdate((k, v)=> {
+            console.log('k: ', k, ' v: ', v);
+        }).open();
+</script>
+
+<!-- Javascript: Loading class and initialize when page load-->
+<script type="text/javascript" src="/js/zonesPage.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        const page = new ZonesPage(document.querySelector('.main') , '{{routeName}}');
+        page.start('{{fullSwimUrl}}');
+    }, false);
+</script>

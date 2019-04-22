@@ -1,0 +1,76 @@
+// ========================
+// Media Quary
+// ========================
+=lato($font-weight: normal, $font-style: normal)
+  font-family: Lato, sans-serif
+  font-weight: $font-weight
+  font-style: $font-style
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+// ========================
+// Media Quary
+// ========================
+=media($media)
+  // If the size is up
+  @if ($media == "on-xs")
+    @media(min-width: 0px) and (max-width: 575px)
+      @content
+
+  @if ($media == "on-sm")
+    @media(min-width: 576px) and (max-width: 767px)
+      @content
+
+  @if ($media == "on-md")
+    @media(min-width: 768px) and (max-width: 991px)
+      @content
+
+  @if ($media == "on-lg")
+    @media(min-width: 992px) and (max-width: 1199px)
+      @content
+
+  @if ($media == "on-xl")
+    @media(min-width: 1200px) and (max-width: 1400px)
+      @content
+
+  // If the size is up
+  @if ($media == "on-xs-up")
+    @media(min-width: 0px)
+      @content
+
+  @if ($media == "on-sm-up")
+    @media(min-width: 576px)
+      @content
+
+  @if ($media == "on-md-up")
+    @media(min-width: 768px)
+      @content
+
+  @if ($media == "on-lg-up")
+    @media(min-width: 992px)
+      @content
+
+  @if ($media == "on-xl-up")
+    @media(min-width: 1200px)
+      @content
+
+  // If the size is Down
+  @if ($media == "on-xs-down")
+    @media(max-width: 575px)
+      @content
+
+  @if ($media == "on-sm-down")
+    @media(max-width: 767px)
+      @content
+
+  @if ($media == "on-md-down")
+    @media(max-width: 991px)
+      @content
+
+  @if ($media == "on-lg-down")
+    @media(max-width: 1199px)
+      @content
+
+  @if ($media == "on-xl-down")
+    @media(max-width: 1399px)
+      @content

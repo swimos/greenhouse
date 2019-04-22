@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Swim Greenhouse Demo</title>
+    <meta name="description" content="F5 Site Performance Website created by SWIM.ai">
+    <link rel="icon" type="image/png" href="/assets/favicon_x128.png">
+
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Main style -->
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <!-- Javascript : swim latest -->
+    <script src="https://cdn.swim.ai/js/3.9.1/swim-core.js"></script>
+    <script src="https://cdn.swim.ai/js/3.9.1/swim-ui.js"></script>
+    <script src="https://cdn.swim.ai/js/3.9.1/swim-ux.js"></script>
+
+    <!-- Javascript : Custom -->
+    <script src="/js/default.js"></script>
+    <script type="text/javascript" src="/js/botClass.js"></script>
+    <script type="text/javascript" src="/js/basePage.js"></script>
+
+    <!-- Global variable from Handlebar -->
+    <script type="text/javascript">
+        const routeName = '{{routeName}}';
+        const botName = '{{botName}}';
+    </script>
+</head>
+<body class="page-{{routeName}}">
+
+    <!-- Header bar -->
+    <header class="main-header container-fluid">
+        <div class="row">
+
+            <!-- Navigation -->
+            <div class="col col-8 col-md-4 content-left">
+                <script type="text/javascript">
+                    function backToAgg() {
+                        window.location.href = '{{{aggregateHostUrl}}}/aggregate';
+                    }
+                    function backToZones() {
+                        window.location.href = '{{{aggregateHostUrl}}}/zones';
+                    }
+                </script>
+
+                {{#if_eq routeName 'home'}}
+                    <h1>Home Page</h1>
+                {{/if_eq}}
+
+                {{#if_eq routeName 'zones'}}
+                    <picture><img src="/assets/icons/ic-view-collection-green.svg" width="30px" height="30px" alt="icon view collection"></picture>
+                    <h1>My Garden Zones</h1>
+                {{/if_eq}}
+
+                {{#if_eq routeName 'aggregator'}}
+                    <a href="javascript: backToZones()">
+                        <picture><img src="/assets/icons/ic-view-collection-green.svg" width="30px" height="30px" alt="icon view collection"></picture>
+                    </a>
+                    <h1>My Garden</h1>
+                {{/if_eq}}
+
+                {{#if_eq routeName 'monitor'}}
+                    <a href="javascript: backToAgg()">
+                        <picture><img src="/assets/icons/ic-view-quilt-green.svg" width="30px" height="30px" alt="Icon view quilt"></picture>
+                    </a>
+                    <h1>My Garden</h1>
+                {{/if_eq}}
+
+                {{#if_eq routeName 'senseHat'}}
+                    <a href="javascript: backToAgg()">
+                        <picture><img src="/assets/icons/ic-view-collection-green.svg" width="30px" height="30px" alt="icon view collection"></picture>
+                    </a>
+                    <h1>My Garden</h1>
+                {{/if_eq}}
+
+                {{#if_eq routeName 'plant'}}
+                    <a class="btn-plant-back" href="javascript: backToAgg()">
+                        <picture><img src="/assets/icons/back-arrow-green.svg" width="24px" height="24px" alt="icon view collection"></picture>
+                    </a>
+                    <picture><img src="/assets/icons/plant-alert-ok.svg" width="43px" height="29px" alt="icon view collection"></picture>
+                    <h1>{{botName}}</h1>
+                {{/if_eq}}
+
+            </div><!-- ./content-left -->
+
+            <!-- Bot Menu -->
+            <div class="col col-4 col-md-4 bot-wrap">
+                <script type="text/javascript">
+                    function toggleBotMenu(menuDiv) {
+                        const menu = menuDiv.children[1];
+                        if(menu.style.height !== '500px') {
+                            menu.style.height = '500px';
+                            menu.style.opacity = '1';
+                        } else {
+                            menu.style.height = '0px';
+                            menu.style.opacity = '0';
+                        }
+                    }
+                </script>
+                {{#if_not_eq routeName 'zones'}}
+                <div id="botMenu" onclick="toggleBotMenu(this)">
+                    <div id="botMenuButton">
+                        <div class="glow"></div>
+                        <picture>
+                            <img src="/assets/icons/bot-white.svg" alt="Icon Bot" width="26px" height="15px">
+                            <span class="notify"></span>
+                        </picture>
+                    </div>
+                </div>
+                {{/if_not_eq}}
+            </div><!-- ./bot-wrap -->
+
+            <!-- Timer & Logo -->
+            <div class="col col-md-4 text-right content-right d-none d-md-flex"
+                style="padding: 0px; margin: 0px; overflow: hidden; height: 64px;">
+                <span class="timer" style="visibility: hidden"></span>
+                <picture>
+                    <img src="/assets/images/marlin-swim-blue.png" width="172" height="64" alt="Swim"/>
+                </picture>
+            </div><!-- ./content-right -->
+
+        </div><!-- ./row -->
+    </header><!-- ./main-header -->
+
+    <!-- Main content  -->
+    {{{body}}}
+
+    <!-- Footer  -->
+    <footer class="container-fluid main-footer">
+        <div class="text-center text-md-right">
+            <picture class="powerBy d-block d-md-none">
+                {{!-- <img src="http://cdn.swim.ai/images/powerBySWIM-EDX-bot-default.svg " height="44px" alt="Powerby SWIM EDX Logo"> --}}
+            </picture>
+            <div class="copyright"></div>
+        </div>
+    </footer><!-- ./main-footer -->
+
+</body>
+</html>

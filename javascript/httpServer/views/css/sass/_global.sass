@@ -1,0 +1,388 @@
+/**
+ * Global style
+ */
+html, body
+  padding: 0
+  margin: 0
+  font-size: 15px
+  font-weight: lighter
+  line-height: 1.4em
+  font-family: Lato, sans-serif
+  color: #fff
+  -webkit-tap-highlight-color: transparent
+  background-color: #54645c
+
+a, a:visited, a:focus
+  color: white
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+p
+  margin-bottom: 1.5rem
+
+// Header
+$header_font_size: 48px 36px 24px 20px 15px 13px
+@for $i from 1 to length($header_font_size)+1
+  h#{$i}, .h#{$i}
+    font-size: rem(nth($header_font_size, $i))
+    font-weight: normal
+
+h1, .h1
+  line-height: 1.188em
+  text-transform: uppercase
+
+h2, .h2
+  line-height: 1.2em
+  text-transform: uppercase
+
+h3, .h3
+  line-height: 1.222em
+
+h4, .h4
+  font-weight: lighter
+  line-height: 1.2em
+
+h6, .h6
+  line-height: 1.23em
+
+/**
+ * Bootstrap override
+ */
+.container
+  max-width: 1440px
+
+/**
+ * Main Header
+ */
+.main-header
+  position: relative
+  z-index: 10
+  height: 64px
+  background: #35483f
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4)
+  color: #1db158
+
+  .content-left,
+  .content-right
+    display: flex
+
+  .content-left
+    a, picture
+      display: flex
+      height: 100%
+      align-items: center
+
+  .btn-plant-back
+    margin-right: 10px
+
+  .content-right
+    margin-top: 15px
+    margin-bottom: 12px
+    justify-content: flex-end
+    align-items: flex-end
+
+    picture
+      padding-left: 15px
+
+  h1
+    align-self: center
+    font-size: 20px
+    margin: 0 0 0 15px
+    font-weight: normal
+    letter-spacing: 1px
+    text-transform: capitalize
+
+  .timer
+    align-self: flex-end
+    font-size: 13px
+    line-height: 1.2
+
+/**
+ * Main footer
+ */
+.main-footer
+  padding: 5px 15px
+
+.copyright
+  font-size: 13px
+  color: #48554f
+
+.powerBy
+  display: block
+  padding-bottom: 10px
+
+/**
+ * Bot Menu
+ */
+.bot-wrap
+  position: static
+
+#botMenu
+  display: flex
+  justify-content: center
+  margin: 0 auto
+  width: 48px
+  height: 100%
+  overflow: hidden
+  flex-direction: column
+
+#botMenuButton
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+  cursor: pointer
+
+  .glow
+    position: absolute
+    top: calc(50% + 2px)
+    left: 50%
+    width: 22px
+    height: 12px
+    border-radius: 5px
+    transform: translate(-50%, -50%)
+    transition: box-shadow 150ms ease-in-out
+
+  &:hover .glow
+    box-shadow: 0px 0px 15px 0px white
+    transition: box-shadow 150ms ease-in-out
+
+  picture
+    position: relative
+
+  .notify
+    display: none
+    position: absolute
+    top: -4px
+    right: -4px
+    width: 12px
+    height: 12px
+    border-radius: 6px
+
+  &.water .notify
+    background: #4bc8ff
+
+#botMenu
+  .botsContainer
+    position: absolute
+    z-index: 9
+    top: 66px
+    left: 0
+    width: 100%
+    color: #4a4a4a
+    padding: 0 15px 15px 15px
+    height: 0
+    opacity: 0
+    transition: height 150ms ease-in-out, opacity 150ms ease-in-out
+
+    .boxRow
+      padding: 0 15px 15px 15px
+      height: 100%
+      overflow: hidden
+      overflow-y: scroll
+
+    .botHeader
+      font-size: 20px
+      padding: 10px 2px 0 2px
+      font-weight: 400
+
+      h2
+        margin: 0
+        text-transform: none
+        font-size: 20px
+        font-weight: 400
+        color: green
+
+      .col
+        display: flex
+        align-items: center
+
+        &:nth-child(2)
+          justify-content: flex-end
+
+    .botBox
+      background: #fff
+      overflow: hidden
+      height: 100%
+
+    .box
+      padding-top: 8px
+      padding-right: 4px
+      padding-left: 4px
+
+      .square
+        position: relative
+        width: 100%
+        padding-top: 30%
+        border-radius: 8px
+        background-color: #f7f7f7
+
+    .botDiv
+      position: absolute
+      top: 0
+      lefT: 0
+      width: 100%
+      height: 100%
+      background: #1db158
+      color: #fff
+      font-size: 20px
+      font-weight: normal
+      border-radius: 8px
+      transition: box-shadow 100ms linear
+
+    .square:hover .botDiv
+      box-shadow: 0px 0px 10px #aaa
+      transition: box-shadow 100ms linear
+      cursor: pointer
+
+    .botDiv
+      .bot-icon
+        position: absolute
+        top: 8px
+        lefT: 8px
+        display: flex
+        align-items: center
+
+        span
+          padding-top: 2px
+          padding-left: 8px
+
+      .plant-name
+        position: absolute
+        top: 8px
+        right: 8px
+        display: flex
+        align-items: center
+
+      ul
+        position: absolute
+        bottom: 8px
+        width: 100%
+        margin: 0
+        padding: 0
+        display: flex
+        flex-direction: row
+
+        li
+          display: flex
+          flex-grow: 1
+          justify-content: center
+
+      .bubbles
+        display: none
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: url('/assets/images/bubbles.svg') repeat center center
+
+      .status-icon
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: url('/assets/icons/status-ok-white.svg') no-repeat center center
+        background-size: 32px 25px
+
+/**
+ * Bot Watering
+ */
+#botMenu .botsContainer .botDiv.watering
+  background: radial-gradient(circle at 50% 39%, #82e6ff, #4bc8ff)
+
+  .bubbles
+    display: block
+
+  .status-icon
+    background: url('/assets/icons/plant-alert-soil-white.svg') no-repeat center center
+    background-size: 39px 47px
+
+/**
+ * other
+ */
+.menu
+  display: flex
+  flex-direction: column
+  cursor: pointer
+  overflow: hidden
+
+  .dropDown
+    display: block
+    background-color: rgb(155, 155, 155)
+    margin-top: 15px
+    padding: 0px 0px 10px 0px
+
+    div
+      text-align: left
+
+      &:hover
+        text-align: left
+        background-color: rgba(200, 200, 255, 0.5)
+
+  &:hover
+    background-color: rgba(200, 200, 200, 0.05)
+    overflow: visible
+
+.headerRouteInfo
+  background-color: rgba(200, 200, 200, 0.1)
+  padding-right: 10px
+
+#backButton
+  background-color: rgba(200, 200, 200, 0.3)
+  cursor: pointer
+  font-size: 24px
+  font-weight: 900
+  transition: all 100ms linear
+
+  &:hover
+    background-color: rgba(200, 200, 200, 0.8)
+
+.loadingText
+  text-align: center
+  margin-top: 5%
+
+.dataItem
+  padding: 5px
+  display: flex
+  flex-grow: 1
+  width: 25%
+  border-bottom: solid 1px rgba(200, 200, 200, 0.3)
+  overflow: hidden
+  background-color: rgba(0, 55, 0, 0.1)
+
+.botHomeIcon,
+.botBackIcon
+  background-size: contain
+  padding: 5px
+  width: 40px
+  height: 40px
+  background-repeat: no-repeat
+  background-position: center
+
+.botHomeIcon
+  background-image: url('/assets/swim-logo-bug.svg')
+  margin: 5px
+
+.botBackIcon
+  background-image: url('/assets/swim-logo-bug.svg')
+
+.btn-fixed
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  right: 15px
+  bottom: 15px
+  z-index: 9
+  width: 56px
+  height: 56px
+  border-radius: 28px
+  overflow: hidden
+  background: #36483F
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2)

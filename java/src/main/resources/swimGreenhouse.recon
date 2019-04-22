@@ -1,0 +1,16 @@
+@server {
+  @plane("greenhouse-demo") {
+    class: "ai.swim.Main"
+  }
+  @store {
+    path: "/tmp/swimGreenhouseDemo"
+    autoCommitDelay: 60000
+  }
+  @http(port: 5620) {
+    plane: "greenhouse-demo"
+    @websocket {
+      serverCompressionLevel: 0
+      clientCompressionLevel: 0
+    }
+  }
+}

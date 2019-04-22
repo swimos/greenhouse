@@ -1,0 +1,1313 @@
+/**
+ * * Loading fonts
+ * */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Lato Light"), local("Lato-Light"), url(./../assets/fonts/lato-light-latin.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/22JRxvfANxSmnAhzbFH8PgLUuEpTyoUstqEm5AMlJo4.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Lato Light"), local("Lato-Light"), url(./../assets/fonts/lato-light-latin-ext.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/IY9HZVvI1cMoAHxvl0w9LVKPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Lato Regular"), local("Lato-Regular"), url(./../assets/fonts/lato-regular-latin.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/MDadn8DQ_3oT6kvnUq_2r_esZW2xOQ-xsNqO47m55DA.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Lato Regular"), local("Lato-Regular"), url(./../assets/fonts/lato-regular-latin-ext.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/8qcEw_nrk_5HEcCpYdJu8BTbgVql8nDJpwnrE27mub0.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Bold"), local("Lato-Bold"), url(./../assets/fonts/lato-bold-latin.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/MgNNr5y1C_tIEuLEmicLmwLUuEpTyoUstqEm5AMlJo4.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Bold"), local("Lato-Bold"), url(./../assets/fonts/lato-bold-latin-ext.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/rZPI2gHXi8zxUjnybc2ZQFKPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 300;
+  src: local("Lato Light Italic"), local("Lato-LightItalic"), url(./../assets/fonts/lato-light-italic-latin.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/2HG_tEPiQ4Z6795cGfdivJBw1xU1rKptJj_0jans920.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 300;
+  src: local("Lato Light Italic"), local("Lato-LightItalic"), url(./../assets/fonts/lato-light-italic-latin-ext.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/XNVd6tsqi9wmKNvnh5HNEIX0hVgzZQUfRDuZrPvH3D8.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Lato Italic"), local("Lato-Italic"), url(./../assets/fonts/lato-italic-latin.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/1KWMyx7m-L0fkQGwYhWwuuvvDin1pK8aKteLpeZ5c0A.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Lato Italic"), local("Lato-Italic"), url(./../assets/fonts/lato-italic-latin-ext.woff2) format("woff2"), url(https://fonts.gstatic.com/s/lato/v11/cT2GN3KRBUX69GVJ2b2hxn-_kf6ByYO6CLYdB4HQE-Y.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/**
+ *
+ * * Global style
+ *
+ * */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  font-weight: lighter;
+  line-height: 1.4em;
+  font-family: Lato, sans-serif;
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  background-color: #54645c;
+}
+
+a, a:visited, a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+h1, .h1 {
+  font-size: rem(48px);
+  font-weight: normal;
+}
+
+h2, .h2 {
+  font-size: rem(36px);
+  font-weight: normal;
+}
+
+h3, .h3 {
+  font-size: rem(24px);
+  font-weight: normal;
+}
+
+h4, .h4 {
+  font-size: rem(20px);
+  font-weight: normal;
+}
+
+h5, .h5 {
+  font-size: rem(15px);
+  font-weight: normal;
+}
+
+h6, .h6 {
+  font-size: rem(13px);
+  font-weight: normal;
+}
+
+h1, .h1 {
+  line-height: 1.188em;
+  text-transform: uppercase;
+}
+
+h2, .h2 {
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+h3, .h3 {
+  line-height: 1.222em;
+}
+
+h4, .h4 {
+  font-weight: lighter;
+  line-height: 1.2em;
+}
+
+h6, .h6 {
+  line-height: 1.23em;
+}
+
+/**
+ *
+ * * Bootstrap override
+ *
+ * */
+.container {
+  max-width: 1440px;
+}
+
+/**
+ *
+ * * Main Header
+ *
+ * */
+.main-header {
+  position: relative;
+  z-index: 10;
+  height: 64px;
+  background: #35483f;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  color: #1db158;
+}
+.main-header .content-left,
+.main-header .content-right {
+  display: flex;
+}
+.main-header .content-left a, .main-header .content-left picture {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.main-header .btn-plant-back {
+  margin-right: 10px;
+}
+.main-header .content-right {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.main-header .content-right picture {
+  padding-left: 15px;
+}
+.main-header h1 {
+  align-self: center;
+  font-size: 20px;
+  margin: 0 0 0 15px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+.main-header .timer {
+  align-self: flex-end;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+/**
+ *
+ * * Main footer
+ *
+ * */
+.main-footer {
+  padding: 5px 15px;
+}
+
+.copyright {
+  font-size: 13px;
+  color: #48554f;
+}
+
+.powerBy {
+  display: block;
+  padding-bottom: 10px;
+}
+
+/**
+ *
+ * * Bot Menu
+ *
+ * */
+.bot-wrap {
+  position: static;
+}
+
+#botMenu {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 48px;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+#botMenuButton {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+#botMenuButton .glow {
+  position: absolute;
+  top: calc(50% + 2px);
+  left: 50%;
+  width: 22px;
+  height: 12px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  transition: box-shadow 150ms ease-in-out;
+}
+#botMenuButton:hover .glow {
+  box-shadow: 0px 0px 15px 0px white;
+  transition: box-shadow 150ms ease-in-out;
+}
+#botMenuButton picture {
+  position: relative;
+}
+#botMenuButton .notify {
+  display: none;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
+#botMenuButton.water .notify {
+  background: #4bc8ff;
+}
+
+#botMenu .botsContainer {
+  position: absolute;
+  z-index: 9;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  color: #4a4a4a;
+  padding: 0 15px 15px 15px;
+  height: 0;
+  opacity: 0;
+  transition: height 150ms ease-in-out, opacity 150ms ease-in-out;
+}
+#botMenu .botsContainer .boxRow {
+  padding: 0 15px 15px 15px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+#botMenu .botsContainer .botHeader {
+  font-size: 20px;
+  padding: 10px 2px 0 2px;
+  font-weight: 400;
+}
+#botMenu .botsContainer .botHeader h2 {
+  margin: 0;
+  text-transform: none;
+  font-size: 20px;
+  font-weight: 400;
+  color: green;
+}
+#botMenu .botsContainer .botHeader .col {
+  display: flex;
+  align-items: center;
+}
+#botMenu .botsContainer .botHeader .col:nth-child(2) {
+  justify-content: flex-end;
+}
+#botMenu .botsContainer .botBox {
+  background: #fff;
+  overflow: hidden;
+  height: 100%;
+}
+#botMenu .botsContainer .box {
+  padding-top: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+#botMenu .botsContainer .box .square {
+  position: relative;
+  width: 100%;
+  padding-top: 30%;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+#botMenu .botsContainer .botDiv {
+  position: absolute;
+  top: 0;
+  lefT: 0;
+  width: 100%;
+  height: 100%;
+  background: #1db158;
+  color: #fff;
+  font-size: 20px;
+  font-weight: normal;
+  border-radius: 8px;
+  transition: box-shadow 100ms linear;
+}
+#botMenu .botsContainer .square:hover .botDiv {
+  box-shadow: 0px 0px 10px #aaa;
+  transition: box-shadow 100ms linear;
+  cursor: pointer;
+}
+#botMenu .botsContainer .botDiv .bot-icon {
+  position: absolute;
+  top: 8px;
+  lefT: 8px;
+  display: flex;
+  align-items: center;
+}
+#botMenu .botsContainer .botDiv .bot-icon span {
+  padding-top: 2px;
+  padding-left: 8px;
+}
+#botMenu .botsContainer .botDiv .plant-name {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+}
+#botMenu .botsContainer .botDiv ul {
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+#botMenu .botsContainer .botDiv ul li {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+#botMenu .botsContainer .botDiv .bubbles {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/images/bubbles.svg") repeat center center;
+}
+#botMenu .botsContainer .botDiv .status-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/icons/status-ok-white.svg") no-repeat center center;
+  background-size: 32px 25px;
+}
+
+/**
+ *
+ * * Bot Watering
+ *
+ * */
+#botMenu .botsContainer .botDiv.watering {
+  background: radial-gradient(circle at 50% 39%, #82e6ff, #4bc8ff);
+}
+#botMenu .botsContainer .botDiv.watering .bubbles {
+  display: block;
+}
+#botMenu .botsContainer .botDiv.watering .status-icon {
+  background: url("/assets/icons/plant-alert-soil-white.svg") no-repeat center center;
+  background-size: 39px 47px;
+}
+
+/**
+ *
+ * * other
+ *
+ * */
+.menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+}
+.menu .dropDown {
+  display: block;
+  background-color: #9b9b9b;
+  margin-top: 15px;
+  padding: 0px 0px 10px 0px;
+}
+.menu .dropDown div {
+  text-align: left;
+}
+.menu .dropDown div:hover {
+  text-align: left;
+  background-color: rgba(200, 200, 255, 0.5);
+}
+.menu:hover {
+  background-color: rgba(200, 200, 200, 0.05);
+  overflow: visible;
+}
+
+.headerRouteInfo {
+  background-color: rgba(200, 200, 200, 0.1);
+  padding-right: 10px;
+}
+
+#backButton {
+  background-color: rgba(200, 200, 200, 0.3);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 900;
+  transition: all 100ms linear;
+}
+#backButton:hover {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+.loadingText {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.dataItem {
+  padding: 5px;
+  display: flex;
+  flex-grow: 1;
+  width: 25%;
+  border-bottom: solid 1px rgba(200, 200, 200, 0.3);
+  overflow: hidden;
+  background-color: rgba(0, 55, 0, 0.1);
+}
+
+.botHomeIcon,
+.botBackIcon {
+  background-size: contain;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.botHomeIcon {
+  background-image: url("/assets/swim-logo-bug.svg");
+  margin: 5px;
+}
+
+.botBackIcon {
+  background-image: url("/assets/swim-logo-bug.svg");
+}
+
+.btn-fixed {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 15px;
+  bottom: 15px;
+  z-index: 9;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #36483F;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/**
+ * * Page - Aggregate
+ * */
+.planterBoxContainer .box {
+  padding-top: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+.planterBoxContainer .box .square {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 8px;
+  background-color: rgba(74, 74, 74, 0.2);
+  overflow: hidden;
+}
+.planterBoxContainer .aggregatorDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.planterBoxContainer .plantDiv,
+.planterBoxContainer .plantDiv picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.planterBoxContainer .plantDiv {
+  background-color: rgba(74, 74, 74, 0.6);
+  cursor: pointer;
+  transition: box-shadow 100ms linear;
+}
+.planterBoxContainer .plantDiv:hover {
+  box-shadow: inset 0px 0px 30px rgba(74, 255, 74, 0.5);
+}
+.planterBoxContainer .plantDiv picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.planterBoxContainer .plantDiv picture img {
+  width: 35%;
+}
+.planterBoxContainer .plantDiv h2 {
+  color: #00df59;
+  padding: 8px;
+  text-transform: none;
+}
+.planterBoxContainer .plantDiv .icon-arrow {
+  position: absolute;
+  top: 4px;
+  right: 11px;
+  padding: 10px;
+}
+.planterBoxContainer .plantDiv ul {
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+.planterBoxContainer .plantDiv ul li {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  font-size: 20px;
+}
+.planterBoxContainer .plantDiv ul li:nth-child(1) {
+  color: #fee54e;
+}
+.planterBoxContainer .plantDiv ul li:nth-child(2) {
+  color: #4bc8ff;
+}
+.planterBoxContainer .plantDiv ul li:nth-child(3) {
+  color: #ff904e;
+}
+
+.alert-disabled .plantDiv ul li,
+.alert-soil .plantDiv ul li,
+.alert-temperature .plantDiv ul li,
+.alert-light .plantDiv ul li {
+  opacity: 0.5;
+}
+
+.alert-ok .plantDiv .icon-arrow {
+  display: none;
+}
+
+/**
+ * * Alert Disabled
+ * */
+.alert-disabled {
+  border: solid 4px #ccc;
+}
+.alert-disabled .plantDiv h2 {
+  color: #ccc;
+}
+.alert-disabled .plantDiv ul li {
+  color: #ccc !important;
+}
+.alert-disabled .plantDiv .icon-arrow {
+  display: none;
+}
+
+/**
+ * * Alert
+ * */
+.alert-light {
+  content: 1;
+  border: solid 4px #fee54e;
+}
+.alert-light .plantDiv h2 {
+  color: #fee54e;
+}
+.alert-light .plantDiv ul li:nth-child(1) {
+  opacity: 1 !important;
+  font-weight: bold;
+}
+.alert-light .plantDiv .icon-arrow svg path {
+  fill: #fee54e;
+}
+
+.alert-soil {
+  content: 2;
+  border: solid 4px #4bc8ff;
+}
+.alert-soil .plantDiv h2 {
+  color: #4bc8ff;
+}
+.alert-soil .plantDiv ul li:nth-child(2) {
+  opacity: 1 !important;
+  font-weight: bold;
+}
+.alert-soil .plantDiv .icon-arrow svg path {
+  fill: #4bc8ff;
+}
+
+.alert-temperature {
+  content: 3;
+  border: solid 4px #ff904e;
+}
+.alert-temperature .plantDiv h2 {
+  color: #ff904e;
+}
+.alert-temperature .plantDiv ul li:nth-child(3) {
+  opacity: 1 !important;
+  font-weight: bold;
+}
+.alert-temperature .plantDiv .icon-arrow svg path {
+  fill: #ff904e;
+}
+
+/**
+ * * Hidden button
+ * */
+.refreshButton {
+  position: fixed;
+  z-index: 10;
+  left: 0px;
+  bottom: 0px;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  background: transparent;
+  opacity: 0;
+}
+
+/**
+ * * Page - Plant
+ * */
+.page-plant .main-footer .copyright {
+  color: #1db158;
+  opacity: 0.6;
+}
+
+.plantMon .bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4a4a4a;
+  opacity: 0.7;
+}
+.plantMon .col {
+  height: calc(100vh - 64px - 35px);
+  min-height: calc(480px - 64px - 35px);
+  max-height: 800px;
+  padding-top: 15px;
+  display: flex;
+}
+.plantMon .box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.plantMon img {
+  width: 100%;
+  height: 100%;
+}
+.plantMon .gauge-wrap {
+  position: relative;
+  display: flex;
+  height: 70%;
+  padding: 15px;
+}
+.plantMon .graphic {
+  width: 100%;
+  height: 100%;
+}
+.plantMon .icon-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 54px;
+  height: 54p;
+}
+.plantMon .icon-arrow {
+  position: absolute;
+  top: 12px;
+  right: 2px;
+  width: 33px;
+  height: 31px;
+}
+.plantMon .alert-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 11px;
+  font-size: 18px;
+  display: flex;
+}
+.plantMon .alert-wrap svg {
+  width: 29px;
+  height: 29px;
+}
+.plantMon .alert-wrap .text {
+  padding-top: 6px;
+  margin-bottom: 0;
+}
+.plantMon .chart-wrap {
+  display: flex;
+  position: relative;
+  height: 300px;
+}
+.plantMon .chart-wrap .graphic {
+  position: absolute;
+}
+
+/* ============================
+ * * Range input
+ * * ========================= */
+.plantMon .range-wrap {
+  position: absolute;
+  bottom: 42px;
+  left: 10px;
+  width: 30px;
+  height: calc(100% - 120px);
+  display: none;
+}
+.plantMon .range-wrap .meter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 2px;
+}
+.plantMon .range-wrap .backdrop-meter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  transform: translate(-50%, 0);
+  border-radius: 2px;
+  background: #827c7c;
+}
+.plantMon [type=range] {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 240px;
+  height: 8px;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  background: transparent;
+}
+.plantMon [type=range], .plantMon [type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  outline: none;
+}
+.plantMon [type=range]::-webkit-slider-runnable-track {
+  height: 0.25em;
+  background: transparent;
+}
+.plantMon [type=range]::-moz-range-track {
+  height: 0.25em;
+  background: transparent;
+}
+.plantMon [type=range]::-ms-track {
+  height: 0.25em;
+  background: transparent;
+}
+.plantMon [type=range]::-webkit-slider-thumb {
+  margin-top: -0.625em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+}
+.plantMon [type=range]::-moz-range-thumb {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+}
+.plantMon [type=range]::-ms-thumb {
+  margin-top: 0;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+}
+.plantMon [type=range]::-ms-tooltip {
+  display: none;
+}
+
+/* ============================
+ * * Alert plants
+ * * ========================= */
+.plantMon .box-light .icon-arrow svg path,
+.plantMon .box-light .alert-wrap svg path:nth-child(2) {
+  fill: #fee54e;
+}
+.plantMon .box-light .alert-wrap {
+  color: #fee54e;
+  opacity: 0.5;
+}
+.plantMon .box-light .range-wrap .meter {
+  background: #fee54e;
+}
+.plantMon .box-light [type=range]::-webkit-slider-thumb {
+  background: #fee54e;
+}
+.plantMon .box-light [type=range]::-moz-range-thumb {
+  background: #fee54e;
+}
+.plantMon .box-light [type=range]::-ms-thumb {
+  background: #fee54e;
+}
+
+.plantMon .box-soil .icon-arrow svg path,
+.plantMon .box-soil .alert-wrap svg path:nth-child(2) {
+  fill: #4bc8ff;
+}
+.plantMon .box-soil .alert-wrap {
+  color: #4bc8ff;
+  opacity: 0.5;
+}
+.plantMon .box-soil .range-wrap .meter {
+  background: #4bc8ff;
+}
+.plantMon .box-soil [type=range]::-webkit-slider-thumb {
+  background: #4bc8ff;
+}
+.plantMon .box-soil [type=range]::-moz-range-thumb {
+  background: #4bc8ff;
+}
+.plantMon .box-soil [type=range]::-ms-thumb {
+  background: #4bc8ff;
+}
+
+.plantMon .box-temperatureCh1 .icon-arrow svg path,
+.plantMon .box-temperatureCh1 .alert-wrap svg path:nth-child(2) {
+  fill: #ff904e;
+}
+.plantMon .box-temperatureCh1 .alert-wrap {
+  color: #ff904e;
+  opacity: 0.5;
+}
+.plantMon .box-temperatureCh1 .range-wrap .meter {
+  background: #ff904e;
+}
+.plantMon .box-temperatureCh1 [type=range]::-webkit-slider-thumb {
+  background: #ff904e;
+}
+.plantMon .box-temperatureCh1 [type=range]::-moz-range-thumb {
+  background: #ff904e;
+}
+.plantMon .box-temperatureCh1 [type=range]::-ms-thumb {
+  background: #ff904e;
+}
+
+.plantMon .box-soil .icon-wrap .ok {
+  display: inline;
+}
+.plantMon .box-soil .icon-wrap .plus {
+  display: none;
+}
+
+.plantMon.alert-box-soil .box-soil .icon-wrap .ok {
+  display: none;
+}
+.plantMon.alert-box-soil .box-soil .icon-wrap .plus {
+  display: inline;
+}
+
+/* ============================
+ * * Global alert state
+ * * ========================= */
+.plantMon .opacityExtend, .plantMon.alert-box-light .box-light .icon-arrow, .plantMon.alert-box-soil .box-soil .icon-arrow, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-arrow, .plantMon.alert-box-light .box-light .chart-wrap, .plantMon.alert-box-soil .box-soil .chart-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .chart-wrap, .plantMon.alert-box-light .box-light .alert-wrap, .plantMon.alert-box-soil .box-soil .alert-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .alert-wrap, .plantMon.alert-box-light .box-light .gauge-wrap .graphic, .plantMon.alert-box-soil .box-soil .gauge-wrap .graphic, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-box-light .box-light .icon-wrap, .plantMon.alert-box-soil .box-soil .icon-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-wrap, .plantMon.alert-box-light .chart-wrap, .plantMon.alert-box-soil .chart-wrap, .plantMon.alert-box-temperatureCh1 .chart-wrap, .plantMon.alert-box-light .alert-wrap, .plantMon.alert-box-soil .alert-wrap, .plantMon.alert-box-temperatureCh1 .alert-wrap, .plantMon.alert-box-light .gauge-wrap .graphic, .plantMon.alert-box-soil .gauge-wrap .graphic, .plantMon.alert-box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-box-light .icon-wrap, .plantMon.alert-box-soil .icon-wrap, .plantMon.alert-box-temperatureCh1 .icon-wrap, .plantMon .chart-wrap, .plantMon .alert-wrap, .plantMon .gauge-wrap .graphic, .plantMon .icon-wrap {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+.plantMon .icon-arrow {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.plantMon.alert-box-light .opacityExtend, .plantMon.alert-box-light .box-light .icon-arrow, .plantMon.alert-box-light .box-light .chart-wrap, .plantMon.alert-box-light .box-light .alert-wrap, .plantMon.alert-box-light .box-light .gauge-wrap .graphic, .plantMon.alert-box-light .box-light .icon-wrap, .plantMon.alert-box-light .chart-wrap, .plantMon.alert-box-light .alert-wrap, .plantMon.alert-box-light .gauge-wrap .graphic, .plantMon.alert-box-light .icon-wrap, .plantMon.alert-box-soil .opacityExtend, .plantMon.alert-box-soil .box-soil .icon-arrow, .plantMon.alert-box-soil .box-soil .chart-wrap, .plantMon.alert-box-soil .box-soil .alert-wrap, .plantMon.alert-box-soil .box-soil .gauge-wrap .graphic, .plantMon.alert-box-soil .box-soil .icon-wrap, .plantMon.alert-box-soil .chart-wrap, .plantMon.alert-box-soil .alert-wrap, .plantMon.alert-box-soil .gauge-wrap .graphic, .plantMon.alert-box-soil .icon-wrap, .plantMon.alert-box-temperatureCh1 .opacityExtend, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-arrow, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .chart-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .alert-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-wrap, .plantMon.alert-box-temperatureCh1 .chart-wrap, .plantMon.alert-box-temperatureCh1 .alert-wrap, .plantMon.alert-box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-box-temperatureCh1 .icon-wrap {
+  opacity: 0.15;
+  transition: opacity 150ms ease-in-out;
+}
+.plantMon.alert-box-light .box-light .opacityExtend, .plantMon.alert-box-light .box-light .icon-arrow, .plantMon.alert-box-light .box-light .chart-wrap, .plantMon.alert-box-light .box-light .alert-wrap, .plantMon.alert-box-light .box-light .gauge-wrap .graphic, .plantMon.alert-box-light .box-light .icon-wrap, .plantMon.alert-box-light .gauge-wrap .box-light .graphic, .plantMon.alert-box-soil .gauge-wrap .plantMon.alert-box-light .box-light .graphic, .plantMon.alert-box-temperatureCh1 .gauge-wrap .plantMon.alert-box-light .box-light .graphic, .plantMon.alert-box-soil .box-soil .opacityExtend, .plantMon.alert-box-soil .box-soil .icon-arrow, .plantMon.alert-box-soil .box-soil .chart-wrap, .plantMon.alert-box-soil .box-soil .alert-wrap, .plantMon.alert-box-soil .box-soil .gauge-wrap .graphic, .plantMon.alert-box-soil .box-soil .icon-wrap, .plantMon.alert-box-soil .gauge-wrap .box-soil .graphic, .plantMon.alert-box-light .gauge-wrap .plantMon.alert-box-soil .box-soil .graphic, .plantMon.alert-box-temperatureCh1 .gauge-wrap .plantMon.alert-box-soil .box-soil .graphic, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .opacityExtend, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-arrow, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .chart-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .alert-wrap, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .icon-wrap, .plantMon.alert-box-temperatureCh1 .gauge-wrap .box-temperatureCh1 .graphic, .plantMon.alert-box-light .gauge-wrap .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .graphic, .plantMon.alert-box-soil .gauge-wrap .plantMon.alert-box-temperatureCh1 .box-temperatureCh1 .graphic {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+.plantMon.alert-setting .trans, .plantMon.alert-setting .icon-arrow, .plantMon.alert-setting.alert-box-light .box-light .icon-arrow, .plantMon.alert-setting.alert-box-soil .box-soil .icon-arrow, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .icon-arrow, .plantMon.alert-setting .chart-wrap, .plantMon.alert-setting.alert-box-light .box-light .chart-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .chart-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .chart-wrap, .plantMon.alert-setting .alert-wrap, .plantMon.alert-setting.alert-box-light .box-light .alert-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .alert-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .alert-wrap, .plantMon.alert-setting .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-light .box-light .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-soil .box-soil .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .gauge-wrap .graphic, .plantMon.alert-setting .icon-wrap, .plantMon.alert-setting.alert-box-light .box-light .icon-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .icon-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .icon-wrap, .plantMon.alert-setting.alert-box-light .box-light .trans, .plantMon.alert-setting.alert-box-light .gauge-wrap .box-light .graphic, .plantMon.alert-setting.alert-box-soil .box-soil .trans, .plantMon.alert-setting.alert-box-soil .gauge-wrap .box-soil .graphic, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .trans, .plantMon.alert-setting.alert-box-temperatureCh1 .gauge-wrap .box-temperatureCh1 .graphic {
+  transition: opacity 150ms ease-in-out;
+}
+.plantMon.alert-setting .icon-wrap, .plantMon.alert-setting.alert-box-light .box-light .icon-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .icon-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .icon-wrap {
+  opacity: 1;
+}
+.plantMon.alert-setting .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-light .box-light .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-soil .box-soil .gauge-wrap .graphic, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .gauge-wrap .graphic {
+  opacity: 0.15;
+}
+.plantMon.alert-setting .alert-wrap, .plantMon.alert-setting.alert-box-light .box-light .alert-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .alert-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .alert-wrap {
+  opacity: 1;
+}
+.plantMon.alert-setting .chart-wrap, .plantMon.alert-setting.alert-box-light .box-light .chart-wrap, .plantMon.alert-setting.alert-box-soil .box-soil .chart-wrap, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .chart-wrap {
+  opacity: 0.15;
+}
+.plantMon.alert-setting .icon-arrow, .plantMon.alert-setting.alert-box-light .box-light .icon-arrow, .plantMon.alert-setting.alert-box-soil .box-soil .icon-arrow, .plantMon.alert-setting.alert-box-temperatureCh1 .box-temperatureCh1 .icon-arrow {
+  opacity: 0.15;
+}
+.plantMon.alert-setting .range-wrap {
+  display: block;
+}
+.plantMon.alert-setting .icon-arrow {
+  opacity: 0;
+}
+
+/**
+ * * Page Monitor
+ * */
+.main.monitor .row {
+  padding: 5px 10px;
+}
+.main.monitor .row .col {
+  padding: 0 5px;
+}
+.main.monitor .row .col > .row > .col {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.main.monitor > .row {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+@media (max-width: 991px) {
+  .main.monitor > .row > .col > .row {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .main.monitor > .row > .col:first-child > .row {
+    padding-top: 5px;
+  }
+}
+.main.monitor .chart, .main.monitor .kpi {
+  position: relative;
+}
+.main.monitor .column-1 > .row {
+  height: 100%;
+}
+@media (max-width: 991px) {
+  .main.monitor .column-1 > .row {
+    height: auto;
+  }
+}
+.main.monitor .chart-1, .main.monitor .chart-2 {
+  height: 100%;
+}
+@media (max-width: 991px) {
+  .main.monitor .chart-1, .main.monitor .chart-2 {
+    height: auto;
+    padding: 25%;
+  }
+}
+@media (max-width: 767px) {
+  .main.monitor .chart-1, .main.monitor .chart-2 {
+    padding: 35%;
+  }
+}
+.main.monitor .chart-3 {
+  padding-top: 50%;
+}
+@media (max-width: 767px) {
+  .main.monitor .chart-3 {
+    padding: 35%;
+  }
+}
+.main.monitor .kpi {
+  padding-top: 100%;
+}
+@media (max-width: 767px) {
+  .main.monitor .kpi {
+    padding: 35%;
+  }
+}
+.main.monitor .box {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.main.monitor .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  color: #2b8e52;
+  border-radius: 8px;
+  background: rgba(74, 74, 74, 0.6) !important;
+  overflow: hidden;
+}
+.main.monitor header {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+.main.monitor header h2 {
+  font-size: 15px;
+  text-transform: none;
+}
+.main.monitor header span {
+  font-size: 13px;
+}
+.main.monitor .chart-1 .title {
+  color: #fee54e;
+}
+.main.monitor .chart-2 .title {
+  color: #4bc8ff;
+}
+.main.monitor .chart-3 .title {
+  color: #ff904e;
+}
+.main.monitor .graphic {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+.main.monitor .graphic .value {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+/**
+ * * Page - SenseHat
+ * */
+.main.senseHat .backdrop {
+  background: #fff;
+  padding: 15px 15px 15px 15px;
+}
+.main.senseHat .subnav {
+  display: flex;
+  padding-bottom: 7.5px;
+  justify-content: space-between;
+}
+.main.senseHat .subnav .icon {
+  display: flex;
+}
+.main.senseHat .subnav .title, .main.senseHat .subnav .plant {
+  display: flex;
+  align-items: center;
+}
+.main.senseHat .subnav img, .main.senseHat .subnav svg {
+  margin-right: 15px;
+}
+.main.senseHat .subnav h2 {
+  margin-bottom: 0;
+}
+.main.senseHat .subnav svg path {
+  fill: #1db158;
+}
+.main.senseHat .subnav svg path span {
+  font-weight: normal;
+}
+.main.senseHat .subnav .plant {
+  font-weight: normal;
+}
+.main.senseHat .subnav .title h2, .main.senseHat .subnav .plant span {
+  color: #1db158;
+  font-size: 20px;
+}
+.main.senseHat .kpi, .main.senseHat .chart {
+  padding-right: 7.5px;
+  padding-left: 7.5px;
+}
+.main.senseHat .kpi .col, .main.senseHat .chart .col {
+  padding: 7.5px;
+}
+.main.senseHat .kpi .wrap, .main.senseHat .chart .wrap {
+  position: relative;
+  padding-top: 40%;
+  color: #fff;
+  background: #1db158;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.main.senseHat .kpi .box, .main.senseHat .chart .box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 4px 8px;
+}
+.main.senseHat .kpi header, .main.senseHat .chart header {
+  display: flex;
+  justify-content: space-between;
+}
+.main.senseHat .kpi header .title, .main.senseHat .chart header .title {
+  font-size: 16px;
+  font-weight: normal;
+}
+.main.senseHat .kpi header .device, .main.senseHat .chart header .device {
+  font-size: 14px;
+  font-weight: light;
+}
+.main.senseHat .kpi .bubbles {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/images/bubbles.svg") repeat center center;
+  opacity: 0;
+}
+.main.senseHat .kpi .value {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.main.senseHat .kpi .graphic {
+  height: 30%;
+}
+.main.senseHat .chart .wrap {
+  padding-top: 100%;
+  color: #1db158;
+  background: #f7f7f7;
+}
+.main.senseHat .chart .box {
+  padding: 0;
+}
+.main.senseHat .chart header {
+  padding: 4px 8px 0 8px;
+}
+.main.senseHat .chart .axis {
+  margin: 0 0 10px 0;
+  padding: 0 8px;
+  text-align: right;
+  font-weight: normal;
+}
+.main.senseHat .chart .graphic {
+  display: flex;
+  flex-grow: 1;
+  margin: 10% 0;
+}
+.main.senseHat .subnav.watering svg path {
+  fill: #45b4e5;
+}
+.main.senseHat .subnav.watering .title h2, .main.senseHat .subnav.watering .plant span {
+  color: #45b4e5;
+}
+.main.senseHat .kpi.watering {
+  background-image: radial-gradient(circle at 50% 39%, #82e6ff, #4bc8ff);
+}
+.main.senseHat .kpi.watering .bubbles {
+  opacity: 1;
+}
+.main.senseHat .chart.watering .title, .main.senseHat .chart.watering .device {
+  color: #45b4e5;
+}
+
+.main.zone .row {
+  padding: 5px 10px;
+}
+.main.zone .row .col {
+  padding: 5px;
+}
+.main.zone .device-wrap {
+  padding-top: 0;
+  padding-bototm: 0;
+}
+.main.zone .device-wrap > .col, .main.zone .device-wrap > .col > .row {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.main.zone .wrap {
+  position: relative;
+  background: rgba(74, 74, 74, 0.6);
+  border-radius: 8px;
+}
+.main.zone .kpi .wrap {
+  padding-top: 98%;
+}
+@media (max-width: 767px) {
+  .main.zone .kpi .wrap {
+    padding-top: 50%;
+  }
+}
+.main.zone .chart .wrap {
+  padding-top: 48%;
+}
+.main.zone h2 {
+  margin-top: 15px;
+  text-transform: none;
+  line-height: 1;
+}
+.main.zone .box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #2b8e52;
+}
+.main.zone header {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+.main.zone header h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.main.zone header span {
+  font-size: 14px;
+}
+.main.zone .graphic {
+  display: flex;
+  flex-grow: 1;
+}
+.main.zone .kpi .graphic {
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.main.zone .chart-1 h3 {
+  color: #fee54e;
+}
+.main.zone .chart-2 h3 {
+  color: #4bc8ff;
+}
+.main.zone .chart-3 h3 {
+  color: #ff904e;
+}
+
+/*# sourceMappingURL=style.css.map */

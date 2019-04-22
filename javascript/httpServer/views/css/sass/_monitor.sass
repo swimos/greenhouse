@@ -1,0 +1,110 @@
+/**
+  * Page Monitor
+  */
+.main.monitor
+  & .row
+    padding: 5px 10px
+
+    & .col
+      padding: 0 5px
+
+      & > .row > .col
+        padding-top: 5px
+        padding-bottom: 5px
+
+  & > .row
+    padding-top: 5px
+    padding-left: 5px
+
+    +media('on-md-down')
+      & > .col > .row
+        padding-top: 0
+        padding-bottom: 0
+
+      & > .col:first-child > .row
+        padding-top: 5px
+
+
+  .chart, .kpi
+    position: relative
+
+  .column-1 > .row
+    height: 100%
+
+    +media('on-md-down')
+      height: auto
+
+  .chart-1, .chart-2
+    height: 100%
+
+    +media('on-md-down')
+      height: auto
+      padding: 25%
+
+    +media('on-sm-down')
+      padding: 35%
+
+  .chart-3
+    padding-top: 50%
+
+    +media('on-sm-down')
+      padding: 35%
+
+  .kpi
+    padding-top: 100%
+
+    +media('on-sm-down')
+      padding: 35%
+
+  .box
+    position: absolute
+    display: flex
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+  .content
+    position: relative
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    width: 100%
+    color: #2b8e52
+    border-radius: 8px
+    background: rgba(74, 74, 74, 0.6) !important
+    overflow: hidden
+
+  header
+    display: flex
+    justify-content: space-between
+    padding: 4px 8px
+
+    h2
+      font-size: 15px
+      text-transform: none
+
+    span
+      font-size: 13px
+
+  .chart-1 .title
+    color: #fee54e
+
+  .chart-2 .title
+    color: #4bc8ff
+
+  .chart-3 .title
+    color: #ff904e
+
+  .graphic
+    display: flex
+    flex-grow: 1
+    width: 100%
+    height: 100%
+    justify-content: center
+    align-items: center
+    margin-top: 10%
+
+    .value
+      font-size: 50px
+      margin-bottom: 15px
