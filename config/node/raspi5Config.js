@@ -1,9 +1,9 @@
 const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
-	botName: 'RaspiAggPlantBot5',
-	hostUrl: '192.168.1.79',
-	aggregateHost: '192.168.1.79',
+	botName: 'RaspiBot5',
+	hostUrl: '192.168.1.96',
+	aggregateHost: '192.168.1.71',
 	hostPort: 8080,
 	swimPort: 9001,
 	senseHatConfig: {
@@ -37,6 +37,5 @@ const HttpConfig = {
 		}
 	}
 }
-
 
 module.exports = HttpConfig;

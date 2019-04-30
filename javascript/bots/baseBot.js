@@ -10,7 +10,7 @@ class BaseBot {
         this.showDebug = showDebug;
         this.config = botConfig;
         this.arduino = arduino;
-
+        this.swimUrl = this.config.swimUrl;
 
         if (this.showDebug) {
             console.info(`[BaseBot] constructed`);

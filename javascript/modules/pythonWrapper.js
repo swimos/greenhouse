@@ -1,10 +1,11 @@
 const spawn = require('child_process').spawn;
 
 class PythonWrapper {
-    constructor(pythonFile, showDebug = false) {
+    constructor(pythonFile, showDebug = false, swimUrl = "127.0.0.1") {
         this.showDebug = showDebug;
         this.pythonFile = pythonFile;
         this.pythonProcess = null;
+        this.swimUrl = swimUrl;
         if (this.showDebug) {
             console.info('[PythonWrapper] constructed', this.pythonFile);
         }
@@ -15,7 +16,8 @@ class PythonWrapper {
             console.info("[PythonWrapper] start wrapper", this.pythonFile);
         }
         try {
-            this.pythonProcess = spawn('python3', [this.pythonFile]);
+            console.info("spawn python3 ", this.pythonFile, this.swimUrl);
+            this.pythonProcess = spawn('python3', [this.pythonFile, this.swimUrl]);
             this.pythonProcess.stdin.setEncoding('utf-8');
             this.pythonProcess.stdout.pipe(process.stdout);        
         } catch(err) {
@@ -71,7 +73,7 @@ class PythonWrapper {
     }
 
     onError(data) {
-        console.error("[PythonWrapper] error: ", data)
+        console.error("[PythonWrapper] error: ", this.swimUrl, data)
     }
 }
 

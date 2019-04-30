@@ -26,7 +26,7 @@ OS_VERSION="${OS_VERSION#\"}"
 
 declare -A ipList=(
   [0]="127.0.0.1"
-  [1]="plantMon.swim.ai"
+  [1]="greenhouse.swim.ai"
   [2]="192.168.1.103"
   [3]="192.168.10.58"
   [4]="192.168.0.204"
@@ -50,7 +50,7 @@ declare -A ipList=(
 
 declare -A startPages=(
     [0]="http://127.0.0.1:8080/"
-    [1]="http://plantMon.swim.ai:8080/zones"
+    [1]="http://greenhouse.swim.ai:8080/zones"
     [2]="http://127.0.0.1:8080/plantMon"
     [3]="http://127.0.0.1:8080/aggregate"
     [4]="http://127.0.0.1:8080/plantMon"

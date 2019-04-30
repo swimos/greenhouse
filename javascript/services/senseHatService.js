@@ -4,7 +4,7 @@ const PythonWrapper = require('../modules/pythonWrapper');
 class SenseHatService extends BaseService {
 
 
-    constructor(serviceConfig, httpServer, showDebug = false) {
+    constructor(serviceConfig, httpServer, showDebug = false, arduino = null) {
         super(serviceConfig, httpServer, showDebug);
         this.joystickState = 'none';
         this.joystick = null;
@@ -14,9 +14,9 @@ class SenseHatService extends BaseService {
         this.pollingIntervalMS = 100;
         this.pollingInterval = null;
 
-        this.envBridge = new PythonWrapper('./../hardware/envSensorBridge.py', this.showDebug);
-        this.imuBridge = new PythonWrapper('./../hardware/imuSensorBridge.py', this.showDebug);
-        this.joystickBridge = new PythonWrapper('./../hardware/joystickBridge.py', this.showDebug);
+        this.envBridge = new PythonWrapper('./../hardware/envSensorBridge.py', this.showDebug, this.swimUrl);
+        this.imuBridge = new PythonWrapper('./../hardware/imuSensorBridge.py', this.showDebug, this.swimUrl);
+        this.joystickBridge = new PythonWrapper('./../hardware/joystickBridge.py', this.showDebug, this.swimUrl);
 
         // console.info(this.envBridge);
             

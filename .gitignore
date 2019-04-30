@@ -6,11 +6,13 @@ javascript/node_modules/*
 java/build/*
 java/dist/*
 java/out
-java/.gradle
 java/nohup.out
 java/.idea
 java/.classpath
 java/.project
+java/.gradle
+java/bin/*
+java/.settings
 build/*
 dist/*
 *.iml

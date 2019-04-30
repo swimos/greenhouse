@@ -2,7 +2,7 @@ const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
 	botName: 'RaspiPlant15',
-	hostUrl: 'raspi15',
+	hostUrl: '192.168.10.52',
 	aggregateHost: '192.168.10.58',
 	hostPort: 8080,
 	swimPort: 9001,
