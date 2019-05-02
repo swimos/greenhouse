@@ -5,8 +5,14 @@ WORKDIR /
 RUN /bin/bash -c 'curl -sL https://deb.nodesource.com/setup_12.x | bash -'
 RUN /bin/bash -c 'apt-get install nodejs -y'
 # RUN /bin/bash -c 'apt-get update -y'
-# RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
-# RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends build-essential libboost-python1.62.0 python3-pip libpython3-dev && \
+    apt-get install -y libxml2 libxml2-dev bison flex libcdk5-dev libavahi-client-dev cmake git
+
+RUN pip3 install --upgrade pip 
+RUN pip3 install --upgrade setuptools 
+RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
+RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
 
 COPY /bin/. /greenhouse/bin/.
 COPY /config/node/. /greenhouse/config/node/.
@@ -22,7 +28,7 @@ WORKDIR /greenhouse/javascript/
 
 RUN /bin/bash -c 'npm install'
 
-ENTRYPOINT ["npm","start"]
+ENTRYPOINT ["npm","start", "config=raspi5"]
 
 EXPOSE 8080
 EXPOSE 8001
