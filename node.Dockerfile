@@ -11,6 +11,7 @@ RUN apt-get update -y && \
 
 RUN pip3 install --upgrade pip 
 RUN pip3 install --upgrade setuptools 
+RUN pip3 install sense-hat
 RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
 RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
 
@@ -31,8 +32,3 @@ RUN /bin/bash -c 'npm install'
 ENTRYPOINT ["npm","start", "config=raspi5"]
 
 EXPOSE 8080
-EXPOSE 8001
-EXPOSE 9001
-EXPOSE 22
-EXPOSE 5620
-EXPOSE 443

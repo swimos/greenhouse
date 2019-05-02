@@ -8,10 +8,10 @@ const HttpConfig = {
 	swimPort: 5620,
 	senseHatConfig: {
 		bot: {
-			enabled: false,
+			enabled: true,
 		},
 		service: {
-			enabled: false,
+			enabled: true,
 			polling: {
 				enabled: true,
 				interval: 100
