@@ -1,13 +1,13 @@
 
-FROM ubuntu:18.04
-WORKDIR /
-RUN /bin/bash -c 'apt-get update -y'
-RUN /bin/bash -c 'apt-get install -y software-properties-common moreutils curl wget unzip'
-RUN /bin/bash -c 'apt-get install apt-utils -y'
-RUN /bin/bash -c 'apt-get install apt-transport-https ca-certificates -y'
-RUN /bin/bash -c 'add-apt-repository ppa:openjdk-r/ppa'
-RUN /bin/bash -c 'apt update -y'
-RUN /bin/bash -c 'apt install -y openjdk-11-jdk'
+# FROM ubuntu:18.04
+# WORKDIR /
+# RUN /bin/bash -c 'apt-get update -y'
+# RUN /bin/bash -c 'apt-get install -y software-properties-common moreutils curl wget unzip'
+# RUN /bin/bash -c 'apt-get install apt-utils -y'
+# RUN /bin/bash -c 'apt-get install apt-transport-https ca-certificates -y'
+# RUN /bin/bash -c 'add-apt-repository ppa:openjdk-r/ppa'
+# RUN /bin/bash -c 'apt update -y'
+# RUN /bin/bash -c 'apt install -y openjdk-11-jdk'
 
 FROM node:11-stretch
 WORKDIR /
