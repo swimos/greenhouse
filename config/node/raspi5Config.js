@@ -8,10 +8,10 @@ const HttpConfig = {
 	swimPort: 5620,
 	senseHatConfig: {
 		bot: {
-			enabled: true,
+			enabled: false,
 		},
 		service: {
-			enabled: true,
+			enabled: false,
 			polling: {
 				enabled: true,
 				interval: 100
@@ -37,6 +37,5 @@ const HttpConfig = {
 		}
 	}
 }
-
 
 module.exports = HttpConfig;

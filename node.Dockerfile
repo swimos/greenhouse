@@ -1,6 +1,8 @@
 FROM node:11-stretch
 # FROM resin/raspberrypi3-debian:stretch
 
+ENV CONFIG=localhost
+
 WORKDIR /
 RUN /bin/bash -c 'curl -sL https://deb.nodesource.com/setup_12.x | bash -'
 RUN /bin/bash -c 'apt-get install nodejs -y'
@@ -29,6 +31,8 @@ WORKDIR /greenhouse/javascript/
 
 RUN /bin/bash -c 'npm install'
 
-ENTRYPOINT ["npm","start", "config=raspi5"]
+RUN echo "Start ${CONFIG}"
+
+ENTRYPOINT ["npm","start", "config=${CONFIG}"]
 
 EXPOSE 8080

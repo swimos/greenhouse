@@ -27,6 +27,7 @@ WORKDIR /greenhouse/java/
 RUN /bin/bash -c './gradlew build -Pconfig=raspi5'
 RUN /bin/bash -c 'mkdir dist'
 RUN /bin/bash -c 'tar -xf build/distributions/java-1.0.tar -C dist/'
+
 ENTRYPOINT ["./dist/java-1.0/bin/java"]
 
 EXPOSE 5620
