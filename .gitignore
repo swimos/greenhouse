@@ -6,7 +6,6 @@ javascript/node_modules/*
 java/build/*
 java/dist/*
 java/out
-java/.gradle
 java/nohup.out
 java/.idea
 java/.classpath
@@ -19,6 +18,5 @@ dist/*
 nohup.out
 *.tar
 *.zip
-*.gradle
 *.log
 .sass-cache
