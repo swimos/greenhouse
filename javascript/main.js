@@ -99,6 +99,7 @@ class Main {
         if (this.showDebug) {
             console.info('[main] initialize');
         }
+
         // start http server
         if (this.serviceConfig.httpEnabled) {
             this._httpServer = new httpServer(this.serviceConfig, this.showDebug);
@@ -115,7 +116,8 @@ class Main {
             for (const service of servicesList) {
                 const serviceClass = service[0];
                 const serviceConfig = service[1];
-                this.servicesList.push(new serviceClass(serviceConfig, this._httpServer, this.showDebug, this.arduino));
+                serviceConfig['aggregateHost'] = this.serviceConfig.aggregateHost;
+                this.servicesList.push(new serviceClass(serviceConfig, this._httpServer, this.showDebug, this.arduino, this.serviceConfig.hostUrl));
             }
         }
 
@@ -123,7 +125,8 @@ class Main {
         for (const startingBot of botList) {
             const botClass = startingBot[0];
             const botConfig = startingBot[1];
-            this.botList.push(new botClass(botConfig, this.showDebug, this.arduino));
+            botConfig['aggregateHost'] = this.serviceConfig.aggregateHost;
+            this.botList.push(new botClass(botConfig, this.showDebug, this.arduino, this.serviceConfig.hostUrl));
         }
         
         if (this.showDebug) {

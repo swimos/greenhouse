@@ -16,11 +16,7 @@
     "express-handlebars": "^3.0.2",
     "handlebars": "^4.0.10",
     "node-fetch": "^1.7.3",
-    "serialport": "^6.2.2",
-    "@swim/core": "^3.9.0",
-    "@swim/client": "^3.9.0",
-    "@swim/ui": "^3.9.0",
-    "@swim/ux": "^3.9.0"
+    "serialport": "^6.2.2"
   },
   "description": ""
 }

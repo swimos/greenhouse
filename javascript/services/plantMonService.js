@@ -2,8 +2,8 @@ const BaseService = require('./baseService');
 
 class PlantMonService extends BaseService {
 
-    constructor(serviceConfig, httpServer, showDebug = false, arduino = null) {
-        super(serviceConfig, httpServer, showDebug);
+    constructor(serviceConfig, httpServer, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
+        super(serviceConfig, httpServer, showDebug, swimUrl);
         this.arduino = arduino;
 
         this.dataValueCache = {};

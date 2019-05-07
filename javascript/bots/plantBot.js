@@ -16,8 +16,8 @@ class PlantBot extends BaseBot {
      * @param {boolean} showDebug - toggle debug output
      * @param {object} arduino - an instance of a ArdiunoBoard class used for sending messages to the board
      */
-    constructor(botConfig, showDebug = false, arduino) {
-        super(botConfig, showDebug);
+    constructor(botConfig, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
+        super(botConfig, showDebug, arduino, swimUrl);
         this.lastUpdateTimestamp = null;
         this.lastMoistureValue = null;
         this.lastLightValue = null;
@@ -28,7 +28,7 @@ class PlantBot extends BaseBot {
 
         // open a Value downlink to SWIM light sensor service 'latest' value lane
         this.lightSensorValueLane = swim.downlinkValue()
-            .hostUri(`ws://127.0.0.1:5620`)
+            .hostUri(`ws://${this.swimUrl}:5620`)
             .nodeUri('/sensor/light')
             .laneUri('latest')
             .didSet((newValue) => {
@@ -37,7 +37,7 @@ class PlantBot extends BaseBot {
 
         // open a Value downlink to SWIM light sensor service 'threshold' value lane
         this.lightThresholdValueLane = swim.downlinkValue()
-            .hostUri(`ws://127.0.0.1:5620`)
+            .hostUri(`ws://${this.swimUrl}:5620`)
             .nodeUri('/sensor/light')
             .laneUri('threshold')
             .didSet((newValue) => {

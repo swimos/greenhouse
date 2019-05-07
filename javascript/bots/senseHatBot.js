@@ -24,8 +24,8 @@ class SenseHatBot extends BaseBot {
      * @param {object} botConfig - bot configuration loaded from config file
      * @param {boolean} showDebug - toggle debug output
      */
-    constructor(botConfig, showDebug = false) {
-        super(botConfig, showDebug);
+    constructor(botConfig, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
+        super(botConfig, showDebug, arduino, swimUrl);
 
         this.botName = botConfig.botName;
         this.showDebug = showDebug;
@@ -93,7 +93,7 @@ class SenseHatBot extends BaseBot {
         this.activeLogo = this.swimLogoLarge;
 
         // create and open a SWIM Value downlink to monitor the 'status' lane of the bot
-        this.valueDownlink = swim.downlinkValue().hostUri('ws://127.0.0.1:5620')
+        this.valueDownlink = swim.downlinkValue().hostUri(`ws://${this.swimUrl}:5620`)
         this.botStatusLane = this.valueDownlink.nodeUri(`/bot/${this.botName}`).laneUri('status')
             .didSet((msg) => {
                 if (this.showDebug) {
@@ -119,7 +119,7 @@ class SenseHatBot extends BaseBot {
                 this.joystickDirection = msg.value
             });
 
-        this.ledBridge = new PythonWrapper('./../hardware/ledMatrixBridge.py', this.showDebug);
+        this.ledBridge = new PythonWrapper('./../hardware/ledMatrixBridge.py', this.showDebug, this.swimUrl);
 
         if (this.showDebug) {
             console.info(`[SenseHatBot] constructed`);

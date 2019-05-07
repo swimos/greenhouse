@@ -13,12 +13,14 @@ RUN apt-get update -y && \
 
 RUN pip3 install --upgrade pip 
 RUN pip3 install --upgrade setuptools 
+RUN pip3 install websocket-client
 RUN pip3 install sense-hat
 RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
 RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
 
 COPY /bin/. /greenhouse/bin/.
 COPY /config/node/. /greenhouse/config/node/.
+COPY /hardware/. /greenhouse/hardware/.
 COPY /javascript/. /greenhouse/javascript/.
 COPY /javascript/bots/. /greenhouse/javascript/bots/.
 COPY /javascript/modules/. /greenhouse/javascript/modules/.
@@ -36,3 +38,4 @@ RUN echo "Start ${CONFIG}"
 ENTRYPOINT ["npm","start", "config=${CONFIG}"]
 
 EXPOSE 8080
+EXPOSE 5620

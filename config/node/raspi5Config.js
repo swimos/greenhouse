@@ -1,17 +1,17 @@
 const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
-	botName: 'RaspiBot5',
+	botName: 'RaspiAggBot5',
 	hostUrl: '192.168.1.96',
-	aggregateHost: '192.168.1.92',
+	aggregateHost: '192.168.1.96',
 	hostPort: 8080,
 	swimPort: 5620,
 	senseHatConfig: {
 		bot: {
-			enabled: false,
+			enabled: true,
 		},
 		service: {
-			enabled: false,
+			enabled: true,
 			polling: {
 				enabled: true,
 				interval: 100

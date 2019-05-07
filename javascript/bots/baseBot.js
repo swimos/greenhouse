@@ -6,11 +6,11 @@
  */
 class BaseBot {
 
-    constructor(botConfig, showDebug = false, arduino = null) {
+    constructor(botConfig, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
         this.showDebug = showDebug;
         this.config = botConfig;
         this.arduino = arduino;
-
+        this.swimUrl = swimUrl;
 
         if (this.showDebug) {
             console.info(`[BaseBot] constructed`);

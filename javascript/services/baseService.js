@@ -1,11 +1,12 @@
 class BaseService {
 
-    constructor(serviceConfig, httpServer, showDebug = false, arduino = null) {
+    constructor(serviceConfig, httpServer, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
         this.showDebug = false;//showDebug;
         this.config = serviceConfig;
         this.pollingTimeout = null;
         this.server = httpServer;
         this.arduino = arduino;
+        this.swimUrl = swimUrl;
 
         if (this.showDebug) {
             console.info(`[BaseService] constructed`);
