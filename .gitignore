@@ -19,6 +19,5 @@ dist/*
 nohup.out
 *.tar
 *.zip
-*.gradle
 *.log
 .sass-cache
