@@ -17,7 +17,7 @@ apply plugin: 'idea'
 
 idea.module.outputDir file("out/production/classes")
 ext.moduleName = 'ai.swim'
-sourceCompatibility = 1.12
+sourceCompatibility = 1.11
 description = "Illustrate basic Swim concepts- ValueLane, MapLane, CommandLane, Recon and Java Objects"
 version = project.property('application.version')
 
@@ -33,23 +33,7 @@ repositories {
 dependencies {
   compile 'ai.swim:swim-server:3.9.2-SNAPSHOT'
   compile 'ai.swim:swim-client:3.9.2-SNAPSHOT'
-  compile 'com.microsoft.azure:azure-eventhubs:1.0.0'
   compile group: 'com.fazecast', name: 'jSerialComm', version: '2.0.2'
-
-  // https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage
-  compile group: 'com.microsoft.azure', name: 'azure-storage', version: '8.3.0'
-
-
-  // https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage-blob
-  compile group: 'com.microsoft.azure', name: 'azure-storage-blob', version: '11.0.1'
-
-  // https://mvnrepository.com/artifact/com.microsoft.rest.v2/client-runtime
-  compile group: 'com.microsoft.rest.v2', name: 'client-runtime', version: '2.1.1'
-
-  // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-  compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
-
-
 }
 
 configurations {

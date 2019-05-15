@@ -21,27 +21,6 @@ import swim.recon.Recon;
 import swim.server.ServerRuntime;
 import swim.structure.Value;
 
-// azure libs
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.AsynchronousFileChannel;
-import java.nio.channels.FileChannel;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.security.InvalidKeyException;
-
-import com.microsoft.azure.storage.*;
-import com.microsoft.azure.storage.blob.*;
-import com.microsoft.rest.v2.RestException;
-import com.microsoft.rest.v2.util.FlowableUtil;
-
-
 public class Main extends AbstractPlane {
 
   /**
@@ -88,39 +67,6 @@ public class Main extends AbstractPlane {
     // Run the swim server, this stays alive until termination
     server.run();
 
-    // azure test code -----
-
-    // Retrieve the credentials and initialize SharedKeyCredentials
-    String accountName = System.getenv("AZURE_STORAGE_ACCOUNT");
-    String accountKey = System.getenv("AZURE_STORAGE_ACCESS_KEY");
-    String raspiConfig = System.getenv("RASPI_CONFIG");
-
-    // Create a ServiceURL to call the Blob service. We will also use this to construct the ContainerURL
-    SharedKeyCredentials creds = new SharedKeyCredentials(accountName, accountKey);
-
-    // We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
-    final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, new PipelineOptions()));
-
-    // Let's create a container using a blocking call to Azure Storage
-    // If container exists, we'll catch and continue
-    containerURL = serviceURL.createContainerURL(raspiConfig);    
-
-    try {
-        ContainerCreateResponse response = containerURL.create(null, null, null).blockingGet();
-        System.out.println("Container Create Response was " + response.statusCode() + ": " + raspiConfig + " created");
-    } catch (RestException e){
-        if (e instanceof RestException && ((RestException)e).response().statusCode() != 409) {
-            throw e;
-        } else {
-            System.out.println("container already exists, resuming...");
-        }
-    }
-
-    // Create a BlockBlobURL to run operations on Blobs
-    final BlockBlobURL blobURL = containerURL.createBlockBlobURL("HelloBlob.txt");   
-    System.out.println("blobUrl created");
-
-    listBlobs();
   }
 
 
@@ -171,18 +117,4 @@ public class Main extends AbstractPlane {
     return configPath;
   }
 
-  static void listBlobs(ContainerURL containerURL) {
-    // Each ContainerURL.listBlobsFlatSegment call return up to maxResults (maxResults=10 passed into ListBlobOptions below).
-    // To list all Blobs, we are creating a helper static method called listAllBlobs,
-    // and calling it after the initial listBlobsFlatSegment call
-      ListBlobsOptions options = new ListBlobsOptions();
-      options.withMaxResults(10);
-
-      containerURL.listBlobsFlatSegment(null, options, null).flatMap(containerListBlobFlatSegmentResponse ->
-          listAllBlobs(containerURL, containerListBlobFlatSegmentResponse))
-          .subscribe(response-> {
-              System.out.println("Completed list blobs request.");
-              System.out.println(response.statusCode());
-          });
-  }  
 }
