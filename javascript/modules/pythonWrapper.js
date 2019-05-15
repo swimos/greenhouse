@@ -16,6 +16,7 @@ class PythonWrapper {
             console.info("[PythonWrapper] start wrapper", this.pythonFile);
         }
         try {
+            console.info("spawn python3 ", this.pythonFile, this.swimUrl);
             this.pythonProcess = spawn('python3', [this.pythonFile, this.swimUrl]);
             this.pythonProcess.stdin.setEncoding('utf-8');
             this.pythonProcess.stdout.pipe(process.stdout);        

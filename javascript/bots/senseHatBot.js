@@ -24,8 +24,8 @@ class SenseHatBot extends BaseBot {
      * @param {object} botConfig - bot configuration loaded from config file
      * @param {boolean} showDebug - toggle debug output
      */
-    constructor(botConfig, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
-        super(botConfig, showDebug, arduino, swimUrl);
+    constructor(botConfig, showDebug = false, arduino = null) {
+        super(botConfig, showDebug, arduino);
 
         this.botName = botConfig.botName;
         this.showDebug = showDebug;

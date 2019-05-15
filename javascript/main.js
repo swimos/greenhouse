@@ -116,8 +116,8 @@ class Main {
             for (const service of servicesList) {
                 const serviceClass = service[0];
                 const serviceConfig = service[1];
-                serviceConfig['aggregateHost'] = this.serviceConfig.aggregateHost;
-                this.servicesList.push(new serviceClass(serviceConfig, this._httpServer, this.showDebug, this.arduino, this.serviceConfig.hostUrl));
+                serviceConfig.swimUrl = this.serviceConfig.hostUrl;
+                this.servicesList.push(new serviceClass(serviceConfig, this._httpServer, this.showDebug, this.arduino));
             }
         }
 
@@ -125,8 +125,9 @@ class Main {
         for (const startingBot of botList) {
             const botClass = startingBot[0];
             const botConfig = startingBot[1];
-            botConfig['aggregateHost'] = this.serviceConfig.aggregateHost;
-            this.botList.push(new botClass(botConfig, this.showDebug, this.arduino, this.serviceConfig.hostUrl));
+            botConfig.swimUrl = this.serviceConfig.hostUrl;
+            console.info(botConfig.swimUrl, this.serviceConfig.hostUrl)
+            this.botList.push(new botClass(botConfig, this.showDebug, this.arduino));
         }
         
         if (this.showDebug) {

@@ -4,8 +4,8 @@ const PythonWrapper = require('../modules/pythonWrapper');
 class SenseHatService extends BaseService {
 
 
-    constructor(serviceConfig, httpServer, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
-        super(serviceConfig, httpServer, showDebug, swimUrl);
+    constructor(serviceConfig, httpServer, showDebug = false, arduino = null) {
+        super(serviceConfig, httpServer, showDebug);
         this.joystickState = 'none';
         this.joystick = null;
         this.dataValueCache = {};

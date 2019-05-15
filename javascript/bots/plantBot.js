@@ -16,8 +16,8 @@ class PlantBot extends BaseBot {
      * @param {boolean} showDebug - toggle debug output
      * @param {object} arduino - an instance of a ArdiunoBoard class used for sending messages to the board
      */
-    constructor(botConfig, showDebug = false, arduino = null, swimUrl = "127.0.0.1") {
-        super(botConfig, showDebug, arduino, swimUrl);
+    constructor(botConfig, showDebug = false, arduino = null) {
+        super(botConfig, showDebug, arduino);
         this.lastUpdateTimestamp = null;
         this.lastMoistureValue = null;
         this.lastLightValue = null;

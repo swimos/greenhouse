@@ -117,7 +117,7 @@ public class DeviceService extends AbstractAgent {
   @SwimLane("join/alert")
   private JoinValueLane<String, Boolean> joinAlert = this.<String, Boolean>joinValueLane()
     .didUpdate((k,n,o) -> {
-      // System.out.println("alert join update: " + k + ", " + n);
+      System.out.println("alert join update: " + k + ", " + n);
       final Record r = Record.of();
       for (Map.Entry<String, Boolean> entry : this.joinAlert.entrySet()) {
         r.slot(entry.getKey(), entry.getValue());
@@ -143,7 +143,7 @@ public class DeviceService extends AbstractAgent {
   @SwimLane("join/needWork")
   private JoinValueLane<String, Boolean> joinNeedWork = this.<String, Boolean>joinValueLane()
     .didUpdate((k, n, o) -> {
-      // System.out.println("NeedWork join update: " + k + ", " + n.toString());
+      System.out.println("NeedWork join update: " + k + ", " + n.toString());
       final Record r = Record.of();
       for (Map.Entry<String, Boolean> entry : this.joinNeedWork.entrySet()) {
         r.slot(entry.getKey(), entry.getValue());

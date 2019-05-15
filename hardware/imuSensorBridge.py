@@ -78,7 +78,7 @@ def startBridge():
         swimSocket.send(message)    
 
 
-        time.sleep(1/1000)
+        # time.sleep(1/5000)
 
 if __name__ == '__main__':
   print("starting main")

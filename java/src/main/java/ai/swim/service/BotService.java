@@ -117,7 +117,7 @@ public class BotService extends AbstractAgent {
       System.out.println("Watering");
       workType.set("WATER");
     } else if (destSensor.contains("light")) {
-      System.out.println("Turn on Shield");
+      System.out.println("Turn on Light");
       workType.set("LIGHT");
     }
   }
