@@ -12,7 +12,7 @@ This application is deployed in the Swim office for monitoring our plants and se
 
 Inside the greenhouse, there are a number of Raspberry Pi devices with various roles. These roles are: Plant Monitor, Automated Robot, and Data Aggregator. It’s important to note that all Raspberry Pi devices run the same software with minor configuration changes that define how they act and participate within the greenhouse network. This diagram provides a simple overview of the complete application and configurations.
 
-![Demo Application Map](https://github.com/swimit/swim-greenhouse/blob/develop/javascript/httpServer/views/assets/images/swim-demo-app-flow.gif "Demo Application Map")
+![Demo Application Map](https://github.com/swimos/greenhouse/blob/master/javascript/httpServer/views/assets/images/swim-demo-app-flow.gif "Demo Application Map")
 
 
 Each device is also running a minimal NodeJS server alongside the Swim Web Agents. Node is used to serve the various status pages used by the web app and as a data bridge from the sensors into Swim. Unlike a traditional web application where all the pages are hosted in a central place, swim web applications can be hosted from each device. This ensures the UI is showing the real time data possible without the latency of being routed through various databases and/or cloud services.
@@ -25,16 +25,29 @@ The *Aggregator* device sits on the network and receives data from every plant a
 
 Every device on the network has a corresponding webpage which shows the current status of that particular device. As a user you are able to navigate between plants, bots, and the aggregator as if it were a single webapp despite each page being served from each device. The details of how each device acts and connects on the network is defined within the config files found in /config. This allows for every device to run identical software with only minor configuration changes defining how the device behaves.
 
-## Getting Started
-All the code required to deploy and run this application is located in this repository, including bash scripts to get things up and running. You will need to be running in a Unix like environment to be able to run this demo. We use both Debian and Ubuntu but you are not limited to just those distributions. For Windows you can setup an compatible environment inside a VM, or in either the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/). NodeJS 9.11.1 or greater, Java 9 or greater, Git, and Gradle are all required in order to run the demo. Be sure those are setup before continuing.
+## Getting Started using Docker
+The greenhouse application is divided into 2 Docker Images. One image is for has Java for running Swim and the second image is a combination of NodeJS and Python3. The application itself is still control with config files in /config/java/ and /config/node respectively. You control which config file the module will use by passing an environmental variable at run time called CONFIG. When running the application on a Raspberry Pi with a SenseHat you will need to add ----privileged at runtime. You will also need to use --publish to open the ports needed for the two images to communicate out with each other and the outside world. In this example we use ports 8080 and 5620. See below for examples of how to build and run each image.
 
-To get started:
+
+### Building Docker Images
+All the code required to deploy and run this application is located in this repository, including the Docker files. You will need to be running in a Unix like environment to be able to run this demo as well as [Docker](https://www.docker.com/get-started). We use both Debian and Ubuntu but you are not limited to just those distributions. For Windows you can setup an compatible environment inside a VM, or in either the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/). It is important to note If you are running Windows 10 Home you may have problems getting Docker to run and it may be easier to just run Docker on your Pi.
+
+To build Docker images:
 1. Clone the repo `git clone https://github.com/swimos/greenhouse.git`
 2. CD into the new directory `cd greenhouse`
-3. from the main project directory run:
-   * `./bin/buildAll.sh config=raspi2`, this will build both Swim and install NodeJS dependencies
-   * `./bin/startAll.sh config=raspi2`, this will start both Swim and NodeJS
-4. Navigate your browser to the address and port you configured your device to live at and verify that it serves out a page. If so you are setup!
+3. Build Java/Swim Docker Image:
+   * `docker build ./ -f ./java.Dockerfile -t <path-to-your-repo>:greenhouse-java-v1`
+4. Build NodeJS+Python Docker Image:
+   * `docker build ./ -f ./node.Dockerfile -t <path-to-your-repo>:greenhouse-node-v1`
+  
+
+### Running Docker Images
+All command line parameters are required with the exception of --privileged which is only required for SenseHat so that python can communicate with the the SenseHat hardware. You can debug an image by adding --entrypoint=/bin/bash. This will run the image and drop you into the bash shell of the running image. From there you can run npm, gradle, or python directly. Just remember that changes made inside an image will be be saved between runs.
+1. Running Java/Swim Docker Image:
+    * `docker run -it --env CONFIG=raspi5 --publish 5620:5620 <path-to-your-repo>:greenhouse-node-v1`
+2. Running NodeJS+Python Docker Image:
+    * `docker run -it --env CONFIG=raspi5 --privileged --publish 8080:8080  <path-to-your-repo>:greenhouse-node-v1`
+
 
 ## Configuration
   Each device gets two configuration files which define how that device acts on the network of devices. One file defines what is needed for the Swim Web Agent and the other holds what is needed for NodeJS. Within the /config folder these files live in /java/ and /node respectively. You can define which set of configuration files to use at startup using the 'config' command line parameter. See the Scripts section below for more information about how to use this parameter. It is important to follow the naming convention shown in the example files when creating configuration files for new devices. An overview of the options within both files is below.
