@@ -26,6 +26,8 @@ The *Aggregator* device sits on the network and receives data from every plant a
 Every device on the network has a corresponding webpage which shows the current status of that particular device. As a user you are able to navigate between plants, bots, and the aggregator as if it were a single webapp despite each page being served from each device. The details of how each device acts and connects on the network is defined within the config files found in /config. This allows for every device to run identical software with only minor configuration changes defining how the device behaves.
 
 ## Getting Started
+NOTE: If you perfer using Docker, a Docker version of the app can be found on the [feature/docker](https://github.com/swimos/greenhouse/tree/feature/docker) branch of this repo.
+
 All the code required to deploy and run this application is located in this repository, including bash scripts to get things up and running. You will need to be running in a Unix like environment to be able to run this demo. We use both Debian and Ubuntu but you are not limited to just those distributions. For Windows you can setup an compatible environment inside a VM, or in either the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Cygwin](https://www.cygwin.com/). NodeJS 9.11.1 or greater, Java 9 or greater, Git, and Gradle are all required in order to run the demo. Be sure those are setup before continuing.
 
 To get started:
