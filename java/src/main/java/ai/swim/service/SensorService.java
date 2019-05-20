@@ -143,8 +143,9 @@ public class SensorService extends AbstractAgent {
   // reset timer every time when it receive taskFinish: true and previous taskFinish: false
   private void checkWorkResult(Boolean newValue, Boolean oldValue) {
     if (newValue && !oldValue) {
-      reset();
-      sampleTimer = setTimer(30000, this::finishSignal);
+      // reset();
+      // sampleTimer = setTimer(30000, this::finishSignal);
+      finishSignal();
     }
   }
 

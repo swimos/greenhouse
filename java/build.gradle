@@ -17,7 +17,7 @@ apply plugin: 'idea'
 
 idea.module.outputDir file("out/production/classes")
 ext.moduleName = 'ai.swim'
-sourceCompatibility = 1.11
+sourceCompatibility = 1.9
 description = "Illustrate basic Swim concepts- ValueLane, MapLane, CommandLane, Recon and Java Objects"
 version = project.property('application.version')
 
