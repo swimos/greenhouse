@@ -3,7 +3,7 @@ const HttpConfig = {
 	showDebug: false,
 	botName: 'RaspiAgg9',
 	hostUrl: '192.168.1.82',
-	aggregateHost: 'plantMon.swim.ai',
+	aggregateHost: 'greenhouse.swim.ai',
 	hostPort: 8080,
 	swimPort: 5620,
 	senseHatConfig: {

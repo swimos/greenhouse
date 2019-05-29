@@ -2,8 +2,8 @@ const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
 	botName: 'CloudZones',
-	hostUrl: 'plantMon.swim.ai',
-	aggregateHost: 'plantMon.swim.ai',
+	hostUrl: 'greenhouse.swim.ai',
+	aggregateHost: 'greenhouse.swim.ai',
 	hostPort: 8080,
 	swimPort: 5620,
 	senseHatConfig: {
