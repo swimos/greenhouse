@@ -1,6 +1,6 @@
 const HttpConfig = {
 	httpEnabled: true,
-	showDebug: true,
+	showDebug: false,
 	botName: 'RaspiBot7',
 	hostUrl: '192.168.10.57',
 	aggregateHost: '192.168.10.58',

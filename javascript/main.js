@@ -19,6 +19,7 @@ class Main {
         this.serviceConfig = null;
         this.args = {};
         this.arduino = null;
+        this.showDebug = false;
 
         this.processCommandLineArgs();
         this.loadConfig(this.args.config || 'localhost')

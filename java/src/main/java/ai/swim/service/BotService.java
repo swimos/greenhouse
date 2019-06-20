@@ -39,7 +39,7 @@ public class BotService extends AbstractAgent {
   @SwimLane("destination")
   MapLane<String, String> destination = this.<String, String>mapLane()
     .didUpdate((k, n ,o ) -> {
-      System.out.println("Bot new Destination join update: " + k + ", " + n);
+      // System.out.println("Bot new Destination join update: " + k + ", " + n);
     });
 
   /**
@@ -50,7 +50,7 @@ public class BotService extends AbstractAgent {
   @SwimLane("workType")
   ValueLane<String> workType = this.<String>valueLane()
     .didSet((n, o) -> {
-      System.out.println("Robot work Type: " + n);
+      // System.out.println("Robot work Type: " + n);
     });
 
   /**
@@ -65,7 +65,7 @@ public class BotService extends AbstractAgent {
   @SwimLane("status")
   ValueLane<String> status = this.<String>valueLane()
     .didSet((n, o) -> {
-      System.out.println("Robot status: " + n);
+      // System.out.println("Robot status: " + n);
       if (n.equals("WORKING")) {
       }
     });
@@ -111,13 +111,13 @@ public class BotService extends AbstractAgent {
   private void startWork() {
     String destSensor = destination.get("sensorUri");
     if (destSensor.contains("temp")) {
-      System.out.println("Turn on Heater");
+      // System.out.println("Turn on Heater");
       workType.set("TEMP");
     } else if (destSensor.contains("soil")) {
-      System.out.println("Watering");
+      // System.out.println("Watering");
       workType.set("WATER");
     } else if (destSensor.contains("light")) {
-      System.out.println("Turn on Light");
+      // System.out.println("Turn on Light");
       workType.set("LIGHT");
     }
   }
