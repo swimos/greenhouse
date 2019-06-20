@@ -179,11 +179,11 @@ public class AggregateService extends AbstractAgent {
       // robotAssigned
 
       for (Map.Entry<Value, String> entry : joinRobot.entrySet()) {
-        if (entry.getValue().equals("AVAILABLE")) {
-          System.out.println("***** Task needed to work on alert on: " + n + "*****");
+        // if (entry.getValue().equals("AVAILABLE")) {
+          // System.out.println("***** Task needed to work on alert on: " + n + "*****");
           // call addDestination in Bot to work here with String.split.get hostUri.
           command(entry.getKey().get("host").stringValue(), entry.getKey().get("node").stringValue(), "addDestination", r);
-          System.out.println("Bot picked: " + entry.getKey().get("node").stringValue());
+          // System.out.println("Bot picked: " + entry.getKey().get("node").stringValue());
           break;
         }
       }
