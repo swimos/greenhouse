@@ -3,7 +3,7 @@ const HttpConfig = {
 	showDebug: false,
 	botName: 'RaspiPlant2',
 	hostUrl: '75.50.82.129',
-	aggregateHost: '192.168.1.92',
+	aggregateHost: '192.168.1.71',
 	hostPort: 8080,
 	swimPort: 5620,
 	senseHatConfig: {

@@ -1,9 +1,9 @@
 const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
-	botName: 'RaspiAggBot5',
+	botName: 'RaspiBot5',
 	hostUrl: '192.168.1.96',
-	aggregateHost: '192.168.1.96',
+	aggregateHost: '192.168.1.71',
 	hostPort: 8080,
 	swimPort: 5620,
 	senseHatConfig: {

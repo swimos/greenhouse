@@ -1,5 +1,7 @@
 FROM openjdk:11-jdk-stretch
 
+ENV CONFIG=$CONFIG
+
 WORKDIR /
 
 COPY /config/java/. /greenhouse/config/java/.
@@ -13,10 +15,12 @@ COPY /java/src/main/resources/. /greenhouse/java/src/main/resources/.
 
 WORKDIR /greenhouse/java/
 
-RUN /bin/bash -c './gradlew build'
-RUN /bin/bash -c 'mkdir dist'
+RUN echo "Build For $CONFIG"
+
+RUN /bin/bash -c './gradlew build -Pconfig=$CONFIG'
+RUN /bin/bash -c 'mkdir -p dist'
 RUN /bin/bash -c 'tar -xf build/distributions/java-1.0.tar -C dist/'
 
-ENTRYPOINT ["./dist/java-1.0/bin/java"]
+ENTRYPOINT ["./dist/java-1.0/bin/java", "-Pconfig=$CONFIG"]
 
 EXPOSE 5620

@@ -11,6 +11,8 @@ java/.idea
 java/.classpath
 java/.project
 java/.gradle
+java/bin/*
+java/.settings
 build/*
 dist/*
 *.iml
