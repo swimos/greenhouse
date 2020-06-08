@@ -45,7 +45,7 @@ To get started:
      * *aggregate.host.uri* - this should be the websocket address of the device acting as the aggregator on the network
      * *device.name* - this the 'Bot Name' and is used in a number of places. Importantly the name needs to have 'Agg', 'Plant', or 'Bot'. Those are used in a number of places to decide what type of bot the current device is. The IP address is inside the name is used by the UI for linking between devices this mean the name format must be something like nameOfBot|ip.of.bot with a pipe separating the name and IP.
      * *device.host.uri* -  this is the address of the current device. This is also used for linking devices together on the network.
-     * *swim.port* - port of the swim service. default is 5620
+     * *swim.port* - port of the swim service. default is 9001
      * *sensor.resolution* - The time in milliseconds over which we will sample time series data.
 
   2. config/node/'*deviceName*'Config.js

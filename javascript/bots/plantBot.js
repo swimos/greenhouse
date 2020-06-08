@@ -28,7 +28,7 @@ class PlantBot extends BaseBot {
 
         // open a Value downlink to SWIM light sensor service 'latest' value lane
         this.lightSensorValueLane = swim.downlinkValue()
-            .hostUri(`ws://127.0.0.1:5620`)
+            .hostUri(`ws://127.0.0.1:9001`)
             .nodeUri('/sensor/light')
             .laneUri('latest')
             .didSet((newValue) => {
@@ -37,7 +37,7 @@ class PlantBot extends BaseBot {
 
         // open a Value downlink to SWIM light sensor service 'threshold' value lane
         this.lightThresholdValueLane = swim.downlinkValue()
-            .hostUri(`ws://127.0.0.1:5620`)
+            .hostUri(`ws://127.0.0.1:9001`)
             .nodeUri('/sensor/light')
             .laneUri('threshold')
             .didSet((newValue) => {

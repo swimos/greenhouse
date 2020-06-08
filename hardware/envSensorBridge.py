@@ -10,7 +10,7 @@ showDebug = False
 if(len(sys.argv) > 1):
   urlFromArgs = sys.argv[1]
 
-host = 'ws://' + urlFromArgs + ':5620'
+host = 'ws://' + urlFromArgs + ':9001'
 
 print(host)
 print(urlFromArgs)

@@ -1,11 +1,11 @@
 const HttpConfig = {
 	httpEnabled: true,
 	showDebug: false,
-	botName: 'RaspiBot5',
-	hostUrl: '192.168.1.96',
-	aggregateHost: '192.168.1.92',
+	botName: 'RaspiAggPlantBot5',
+	hostUrl: '192.168.1.79',
+	aggregateHost: '192.168.1.79',
 	hostPort: 8080,
-	swimPort: 5620,
+	swimPort: 9001,
 	senseHatConfig: {
 		bot: {
 			enabled: true,
@@ -20,14 +20,14 @@ const HttpConfig = {
 	},
 	plantConfig: {
 		bot: {
-			enabled: false,
+			enabled: true,
 			updateInterval: {
 				enabled: false,
 				intervalTimeout: 1000, // in milliseconds
 			}
 		},
 		service: {
-			enabled: false,
+			enabled: true,
 			arduinoAddress: '/dev/ttyACM0',
 			baud: 115200,
 			polling: {

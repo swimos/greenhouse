@@ -5,7 +5,7 @@ const HttpConfig = {
 	hostUrl: '192.168.10.58',
 	aggregateHost: 'plantMon.swim.ai',
 	hostPort: 8080,
-	swimPort: 5620,
+	swimPort: 9001,
 	senseHatConfig: {
 		bot: {
 			enabled: false,

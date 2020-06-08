@@ -3,7 +3,7 @@ class AggregatePage extends BasePage{
         super(parent, routeName);
         this._parent = parent;
         this._maxPlants = 8;
-        this._aggregateUrl = 'ws://127.0.0.1:5620';
+        this._aggregateUrl = 'ws://127.0.0.1:9001';
         this._boxes = [];
 
         this._plants = {};
@@ -20,7 +20,7 @@ class AggregatePage extends BasePage{
     start(aggregateUrl) {
         super.start(aggregateUrl);
         this._aggregateUrl = aggregateUrl;
-        // this._aggregateUrl = 'ws://192.168.0.210:5620'; // Testing
+        // this._aggregateUrl = 'ws://192.168.0.210:9001'; // Testing
 
         const nodeRef = swim.nodeRef(this._aggregateUrl, '/aggregate');
         this._plantsLink = nodeRef.downlinkMap().laneUri('join/latest')

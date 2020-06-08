@@ -1,9 +1,9 @@
-open module ai.swim {
-  requires transitive swim.server;
-  requires com.fazecast.jSerialComm;
+open module swim.greenhouse {
+  requires transitive swim.api;
+  requires swim.server;
   requires swim.client;
+  requires com.fazecast.jSerialComm;
 
-  exports ai.swim;
+  exports swim.greenhouse;
 
-  provides swim.api.plane.Plane with ai.swim.Main;
 }

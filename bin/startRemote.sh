@@ -22,7 +22,7 @@ rm ./${INSTALL_FOLDER}/*.err
 '")
 
 (export SSHPASS=${pwd}
-sshpass -e ssh ${sshAddress} "sh -c 'cd ${INSTALL_FOLDER}/java; ./dist/java-1.0/bin/java -Pconfig=${botName} > ~/${INSTALL_FOLDER}/swim.log 2> ~/${INSTALL_FOLDER}/swim.err < /dev/null &'"
+sshpass -e ssh ${sshAddress} "sh -c 'cd ${INSTALL_FOLDER}/java; ./dist/java-1.0.1/bin/java -Pconfig=${botName} > ~/${INSTALL_FOLDER}/swim.log 2> ~/${INSTALL_FOLDER}/swim.err < /dev/null &'"
 sshpass -e ssh ${sshAddress} "sh -c 'cd ${INSTALL_FOLDER}/javascript; nohup npm start config=${botName} > ~/${INSTALL_FOLDER}/node.log 2> ~/${INSTALL_FOLDER}/node.err < /dev/null &'"
 sshpass -e ssh ${sshAddress} "sh -c 'DISPLAY=:0 chromium-browser --kiosk ${startPages[${botNumber}]} > ~/${INSTALL_FOLDER}/other.log 2> ~/${INSTALL_FOLDER}/other.err < /dev/null &'")
 

@@ -1,4 +1,4 @@
-package ai.swim.service;
+package swim.greenhouse.service;
 
 import swim.api.SwimLane;
 import swim.api.agent.AbstractAgent;

@@ -93,7 +93,7 @@ class SenseHatBot extends BaseBot {
         this.activeLogo = this.swimLogoLarge;
 
         // create and open a SWIM Value downlink to monitor the 'status' lane of the bot
-        this.valueDownlink = swim.downlinkValue().hostUri('ws://127.0.0.1:5620')
+        this.valueDownlink = swim.downlinkValue().hostUri('ws://127.0.0.1:9001')
         this.botStatusLane = this.valueDownlink.nodeUri(`/bot/${this.botName}`).laneUri('status')
             .didSet((msg) => {
                 if (this.showDebug) {

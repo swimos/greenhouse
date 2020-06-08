@@ -1,7 +1,7 @@
 class BaseService {
 
     constructor(serviceConfig, httpServer, showDebug = false, arduino = null) {
-        this.showDebug = false;//showDebug;
+        this.showDebug = showDebug;
         this.config = serviceConfig;
         this.pollingTimeout = null;
         this.server = httpServer;

@@ -6,7 +6,7 @@ class PlantPage extends BasePage {
         super(parentDiv, routeName);
         this.parentDiv = parentDiv;
         this.frameIntervalMS = 200;
-        this.swimUrl = 'ws://127.0.0.1:5620' // Fallback local service
+        this.swimUrl = 'ws://127.0.0.1:9001' // Fallback local service
         this._alertStats = 0;
     }
 
@@ -29,7 +29,7 @@ class PlantPage extends BasePage {
     start(aggregateUrl) {
         super.start(aggregateUrl);
 
-        //this.swimUrl = 'ws://192.168.0.212:5620'; // Testing
+        //this.swimUrl = 'ws://192.168.0.212:9001'; // Testing
 
         new Graphic(this.swimUrl, 'light', 'lx', '#fee54e');
         new Graphic(this.swimUrl, 'soil', '%', '#4bc8ff');

@@ -317,7 +317,7 @@
 
     document.addEventListener('DOMContentLoaded', function(){
         const host = '{{fullSwimUrl}}';
-        // const host = 'ws://192.168.0.208:5620'; // TESTING
+        // const host = 'ws://192.168.0.208:9001'; // TESTING
         const subnav = document.querySelector('.subnav');
         const plant = document.querySelector('.subnav .plant span');
         const tempKpi = new Kpi(host, 'temperature', 'kpi-1', '°C');
@@ -346,8 +346,8 @@
     document.addEventListener('DOMContentLoaded', function(){
         // const page = new AggregatePage(document.getElementById('main'), '{{routeName}}');
         const page = new BasePage(document.querySelector('#main') , '{{routeName}}');
-        // const page = new BasePage(document.querySelector('#main') , 'ws://192.168.0.205:5620');
+        // const page = new BasePage(document.querySelector('#main') , 'ws://192.168.0.205:9001');
         page.start('{{aggregateSwimUrl}}');
-        // page.start('ws://192.168.0.210:5620');
+        // page.start('ws://192.168.0.210:9001');
     }, false);
 </script>

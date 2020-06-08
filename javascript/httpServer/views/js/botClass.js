@@ -3,7 +3,7 @@ class Bot {
         this.botName = botName;
         this.botData = botData;
         this.plantName = null;
-        this.botAddress = `ws://${botData.address.split(':')[0]}:5620`;
+        this.botAddress = `ws://${botData.address.split(':')[0]}:9001`;
         this.botStatus = null;
         this.parentDiv = parentDiv;
         this.domNode = document.createElement('div');

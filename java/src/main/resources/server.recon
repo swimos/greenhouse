@@ -1,0 +1,37 @@
+greenhouse: @fabric {
+  @plane(class: "swim.greenhouse.Main")
+
+  @node {
+    pattern: "/sensor/:id"
+    @agent(class: "swim.greenhouse.service.SensorService")
+  }  
+
+  @node {
+    pattern: "/device"
+    @agent(class: "swim.greenhouse.service.DeviceService")
+  }  
+
+  @node {
+    pattern: "/bot/:id"
+    @agent(class: "swim.greenhouse.service.BotService")
+  }  
+
+  @node {
+    pattern: "/aggregate"
+    @agent(class: "swim.greenhouse.service.AggregateService")
+  }  
+
+  @node {
+    pattern: "/zone"
+    @agent(class: "swim.greenhouse.service.ZoneService")
+  }  
+
+}
+
+@web(port: 9001) {
+  space: "greenhouse"
+  @websocket {
+    serverCompressionLevel: 0# -1 = default; 0 = off; 1-9 = deflate level
+    clientCompressionLevel: 0# -1 = default; 0 = off; 1-9 = deflate level
+  }
+}

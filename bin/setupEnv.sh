@@ -26,7 +26,7 @@ printf "*${GREY} do system update (again)${NC}\n"
 
 printf "*${GREY} install node 11/x${NC}\n"
 (sudo apt-get remove -y nodejs
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g node-gyp --unsafe-perm
 sudo npm install -g serialport --unsafe-perm)

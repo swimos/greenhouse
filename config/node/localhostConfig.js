@@ -1,11 +1,11 @@
 const HttpConfig = {
 	httpEnabled: true,
-	showDebug: true,
+	showDebug: false,
 	hostUrl: '127.0.0.1',
 	aggregateHost: '127.0.0.1',
 	hostPort: 8080,
-	swimPort: 5620,
-	botName: 'RaspiPlantAggBotLocal',
+	swimPort: 9001,
+	botName: 'RaspiAggPlantBotLocal',
 	senseHatConfig: {
 		bot: {
 			enabled: false,
@@ -20,23 +20,15 @@ const HttpConfig = {
 	},
 	plantConfig: {
 		bot: {
-			enabled: false,
-			consumer_key: '',
-			consumer_secret: '',
-			access_token: '',
-			access_token_secret: '',
-			randomTweet: {
+			enabled: true,
+			updateInterval: {
 				enabled: false,
-				intervalTimeout: 1000 * 120, // in milliseconds
-			},
-			trackFollowers: {
-				enabled: false,
-				intervalTimeout: 1000 * 60 * 120, // in milliseconds
+				intervalTimeout: 1000, // in milliseconds
 			}
 		},
 		service: {
-			enabled: false,
-			arduinoAddress: '/dev/ttyACM0',
+			enabled: true,
+			arduinoAddress: '/dev/ttyS4',
 			baud: 115200,
 			polling: {
 				enabled: true,
@@ -45,6 +37,5 @@ const HttpConfig = {
 		}
 	}
 }
-
 
 module.exports = HttpConfig;

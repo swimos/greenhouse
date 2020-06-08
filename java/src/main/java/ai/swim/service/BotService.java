@@ -1,6 +1,6 @@
-package ai.swim.service;
+package swim.greenhouse.service;
 
-import ai.swim.Main;
+import swim.greenhouse.Main;
 import java.util.Map;
 import swim.api.SwimLane;
 import swim.api.agent.AbstractAgent;
@@ -194,9 +194,9 @@ public class BotService extends AbstractAgent {
         .slot("key", System.getProperty("device.name", "")));
     } else {
       command(aggHost, "/aggregate", "addBot", Record.of()
-        .slot("host", hostUriHack().toString()) // ws://192.168.0.151:5620
+        .slot("host", hostUriHack().toString()) // ws://192.168.0.151:9001
         .slot("node", nodeUri().toString()) // /bot/6
-        .slot("key", System.getProperty("device.name", "")));// RaspiBot6|192.168.0.151:5620
+        .slot("key", System.getProperty("device.name", "")));// RaspiBot6|192.168.0.151:9001
     }
   }
 

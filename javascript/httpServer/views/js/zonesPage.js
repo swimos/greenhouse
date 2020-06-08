@@ -7,7 +7,7 @@ class ZonesPage {
 
     start(aggregateUrl) {
         this._aggregateUrl = aggregateUrl;
-        this._aggregateUrl = 'ws://192.168.0.210:5620';
+        this._aggregateUrl = 'ws://192.168.0.210:9001';
 
         const nodeRef = swim.nodeRef(this._aggregateUrl, '/zone');
 

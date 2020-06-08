@@ -1,4 +1,4 @@
-package ai.swim.util;
+package swim.greenhouse.util;
 
 import com.fazecast.jSerialComm.SerialPort;
 import swim.api.plane.PlaneContext;

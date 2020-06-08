@@ -1,9 +1,9 @@
-package ai.swim.service;
+package swim.greenhouse.service;
 
-import ai.swim.Main;
+import swim.greenhouse.Main;
 import java.util.Map;
 
-import ai.swim.util.TimeUtil;
+import swim.greenhouse.util.TimeUtil;
 import swim.api.SwimLane;
 import swim.api.agent.AbstractAgent;
 import swim.api.lane.CommandLane;
@@ -161,18 +161,18 @@ public class AggregateService extends AbstractAgent {
   @SwimLane("createTask")
   private CommandLane<String> createTask = this.<String>commandLane()
     .onCommand(n -> {
-      // ws://192.168.0.212:5620_RaspiPlant12|192.168.0.212:8080-light
+      // ws://192.168.0.212:9001_RaspiPlant12|192.168.0.212:8080-light
       Record r = Record.of();
       String[] dest = n.split("-");
       String secondSplit = dest[0];
       String destSensor = dest[1]; // light
 
       String[] device = secondSplit.split("_");
-      String deviceHost = device[0]; // ws://192.168.0.212:5620_
+      String deviceHost = device[0]; // ws://192.168.0.212:9001_
       String deviceName = device[1]; // RaspiPlant12|192.168.0.212:8080
 
 
-      r.slot("deviceHost", deviceHost);   // ws://192.168.0.150:5620
+      r.slot("deviceHost", deviceHost);   // ws://192.168.0.150:9001
       r.slot("deviceName", deviceName);   // RaspiPlant10|192.168.0.116:8080
       r.slot("sensorUri", "/sensor/" + destSensor); // /sensor/temp4
 
@@ -207,7 +207,7 @@ public class AggregateService extends AbstractAgent {
 
   /**
    * Use map lane to store each sensor's alert status
-   * e.g. {ws://192.168.1.92:5620-RaspiPlant4|192.168.1.92:8080-temp4: T/F}
+   * e.g. {ws://192.168.1.92:9001-RaspiPlant4|192.168.1.92:8080-temp4: T/F}
    */
   @SwimLane("alert")
   protected MapLane<String, Boolean> alert = this.<String, Boolean>mapLane()
@@ -238,7 +238,7 @@ public class AggregateService extends AbstractAgent {
   @SwimLane("addAlert")
   private CommandLane<Value> addAlert = this.<Value>commandLane()
     .onCommand(v -> {
-      final Value host = v.get("host"); // device.host.uri=192.168.0.150:5620
+      final Value host = v.get("host"); // device.host.uri=192.168.0.150:9001
       if (host.isDefined()) {
         joinAlert.downlink(v.get("key").stringValue()) //RaspiPlant4|192.168.0.150:8080
           .hostUri(host.stringValue())
@@ -309,9 +309,9 @@ public class AggregateService extends AbstractAgent {
         .slot("data", r));
     } else {
       command(aggHost, "/zone", "addAgg", Record.of()
-        .slot("host", hostUriHack().toString()) // device.host.uri= ws://192.168.0.150:5620
+        .slot("host", hostUriHack().toString()) // device.host.uri= ws://192.168.0.150:9001
         .slot("node", nodeUri().toString()) // /aggregate
-        .slot("key", System.getProperty("device.name", "")) //RaspiAgg4|192.168.0.150:5620
+        .slot("key", System.getProperty("device.name", "")) //RaspiAgg4|192.168.0.150:9001
         .slot("data", r));
     }
   }

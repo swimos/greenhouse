@@ -1,56 +1,60 @@
 import java.util.regex.Matcher
 
 buildscript {
-    repositories {
-      maven { url 'https://plugins.gradle.org/m2/' }
-    }
-  dependencies {
-    classpath 'com.netflix.nebula:gradle-ospackage-plugin:4.3.0'
+  repositories {
+    maven { url 'https://plugins.gradle.org/m2/' }
   }
 }
 
-apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: 'nebula.ospackage-application'
-apply plugin: 'maven'
-apply plugin: 'idea'
+plugins {
+  id "java"
+  id "java-library"
+  id "application"
+  id "nebula.ospackage-application" version "8.0.3"
+  id "idea"
+}
 
 idea.module.outputDir file("out/production/classes")
-ext.moduleName = 'ai.swim'
-sourceCompatibility = 1.9
-description = "Illustrate basic Swim concepts- ValueLane, MapLane, CommandLane, Recon and Java Objects"
-version = project.property('application.version')
 
-def configFile = 'raspi'
+group = 'ai.swim'
+description = 'Swim Greenhouse Demo'
+ext.moduleName = 'swim.greenhouse'
+sourceCompatibility = 1.9
+ext.swimVersion = project.property('swim.version')
+version = project.property('app.version')
+mainClassName = 'swim.greenhouse.Main'
+
+def jvmVersion = 9 //System.getProperty('java.version').split('\\.')[0] as Integer
+def useModules = jvmVersion >= 9 && !project.hasProperty('no-modules')
 
 repositories {
   mavenCentral()
   maven {
-    url "https://oss.sonatype.org/content/repositories/snapshots/"
+    url "https://swimos.bintray.com/maven/"
   }
+
 }
 
 dependencies {
-  compile 'ai.swim:swim-server:3.9.2-SNAPSHOT'
-  compile 'ai.swim:swim-client:3.9.2-SNAPSHOT'
+  api group: 'org.swimos', name: 'swim-api', version: swimVersion
+  implementation group: 'org.swimos', name: 'swim-server', version: swimVersion
+  implementation group: 'org.swimos', name: 'swim-client', version: swimVersion
   compile group: 'com.fazecast', name: 'jSerialComm', version: '2.0.2'
 }
 
-configurations {
-  testCompile.exclude group: 'ai.swim:swim-server'
-}
-
-compileJava {
-  options.compilerArgs += ['-Xlint']
-}
+// dependencies {
+//   compile fileTree(dir: 'lib', include: '*.jar')
+// }
 
 afterEvaluate {
   compileJava {
-    doFirst {
-      options.compilerArgs += [
-        '--module-path', classpath.asPath,
-      ]
-      classpath = files()
+    if (useModules) {
+      doFirst {
+        options.compilerArgs += [
+          '--module-path', classpath.asPath,
+        ]
+        classpath = files()
+      }
     }
     options.compilerArgs += ['-Xlint:all,-requires-automatic']
     options.encoding = 'UTF-8'
@@ -68,15 +72,17 @@ afterEvaluate {
 
   tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+    if (!useModules) {
+      exclude '*module-info*'
+    }
   }
 
   run {
     dependsOn jar
     doFirst {
       jvmArgs += [
-        '-Dapp.config='+projectDir.parent+'/config/java/'+hostname+'-app.properties',
-        '--module-path', files(configurations.runtimeClasspath, jar.archivePath).asPath,
-        '--module', "${moduleName}/${mainClassName}",
+        '--module-path', files(configurations.runtimeClasspath, jar.archiveFile).asPath,
+        '--module', "${moduleName}/${mainClassName}"
       ]
       classpath = files()
     }
@@ -87,7 +93,7 @@ afterEvaluate {
     doFirst {
       classpath = files()
       defaultJvmOpts = [
-        '-Dapp.config='+projectDir.parent+'/config/java/'+hostname+'-app.properties',
+        '-Dswim.config=/server.recon',
         '--module-path', 'APP_HOME_LIBS',
         '--module', "${moduleName}/${mainClassName}"
       ]
@@ -102,20 +108,5 @@ afterEvaluate {
       batFile.text = batContent.replaceFirst('APP_HOME_LIBS', Matcher.quoteReplacement('%APP_HOME%\\lib'))
     }
   }
-}
 
-task runMain(type: JavaExec) {
-  main = mainClassName
-  systemProperties System.properties
-  if (project.hasProperty('config')) {
-      hostname = config
-  }
 }
-
-javadoc {
-  options.charSet = 'UTF-8'
-}
-
-mainClassName = 'ai.swim.Main'
-applicationDefaultJvmArgs = ["-Dapp.config="+projectDir.parent+"/config/java/"+hostname+"-app.properties"]
-//applicationDefaultJvmArgs = ["-Dapp.config="+projectDir.parent+"/config/java/"+hostname+"-app.properties", "-Dcom.sun.management.jmxremote.port=3333", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-Dcom.sun.management.jmxremote.local.only=false", "-Dcom.sun.management.jmxremote.port=1098", "-Djava.rmi.server.hostname=192.168.0.100"]

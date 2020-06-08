@@ -21,7 +21,7 @@ class HttpServer {
 		this.fullHostUrl = 'http://' + this.hostUrl + ((this.port !== 80) ? (':' + this.port) : '');
         this.fullSwimUrl = 'ws://' + this.hostUrl + ':' + this.swimPort;
         this.fullAggUrl = 'http://' + this.config.aggregateHost + ((this.port !== 80) ? (':' + this.port) : '');
-        this.fullAggSwimUrl = 'ws://' + this.config.aggregateHost + ':5620';
+        this.fullAggSwimUrl = 'ws://' + this.config.aggregateHost + ':9001';
         this.isPlantMon = this.config.isPlantMon;
         this.isSenseHat = this.config.isSenseHat;
         this.isAggregator = this.config.isAggregator;

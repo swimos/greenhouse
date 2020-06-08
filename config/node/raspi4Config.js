@@ -5,7 +5,7 @@ const HttpConfig = {
 	hostUrl: '192.168.0.204',
 	aggregateHost: '192.168.0.203',
 	hostPort: 8080,
-	swimPort: 5620,
+	swimPort: 9001,
 	senseHatConfig: {
 		bot: {
 			enabled: false,

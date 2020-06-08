@@ -30,7 +30,7 @@ class BasePage {
     start(aggregateUrl) {
         this._aggregateUrl = aggregateUrl;
 
-        // this._aggregateUrl = 'ws://192.168.0.210:5620'; // Testing
+        // this._aggregateUrl = 'ws://192.168.0.210:9001'; // Testing
         const nodeRef = swim.nodeRef(this._aggregateUrl, '/aggregate');
 
         nodeRef.downlinkMap().laneUri('join/robot')
@@ -157,7 +157,7 @@ class BoxBot {
     set device(string) {
         const split = string.split('|');
         this._device = string;
-        this._host = `ws://${split[1].split(':')[0]}:5620`;
+        this._host = `ws://${split[1].split(':')[0]}:9001`;
         this._botName.text( `${split[0]}` );
         this.href( split[1] );
         this.connect();

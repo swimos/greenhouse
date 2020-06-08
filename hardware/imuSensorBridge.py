@@ -9,7 +9,7 @@ urlFromArgs = '127.0.0.1'
 if(len(sys.argv) > 1):
   urlFromArgs = sys.argv[1]
 
-host = 'ws://' + urlFromArgs + ':5620'
+host = 'ws://' + urlFromArgs + ':9001'
 
 swimSocket = create_connection(host)
 sense = SenseHat()

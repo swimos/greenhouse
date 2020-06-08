@@ -51,7 +51,7 @@ cd ${INSTALL_FOLDER}/java
 ./gradlew build -Pconfig=${botName}
 rm -rf dist/
 mkdir dist/
-tar -xf build/distributions/java-1.0.tar -C dist/
+tar -xf build/distributions/java-1.0.1.tar -C dist/
 '")
 
 printf "${GREEN}Done.${NC}\n"
