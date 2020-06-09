@@ -109,7 +109,6 @@ afterEvaluate {
       batFile.text = batContent.replaceFirst('APP_HOME_LIBS', Matcher.quoteReplacement('%APP_HOME%\\lib'))
     }
   }
-
 }
 
 mainClassName = 'ai.swim.Main'
