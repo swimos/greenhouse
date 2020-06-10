@@ -16,7 +16,7 @@
     "express-handlebars": "^3.0.2",
     "handlebars": "^4.0.10",
     "node-fetch": "^1.7.3",
-    "serialport": "^7.1.5"
+    "serialport": "^6.2.2"
   },
   "description": ""
 }

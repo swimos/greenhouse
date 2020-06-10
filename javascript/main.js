@@ -19,7 +19,6 @@ class Main {
         this.serviceConfig = null;
         this.args = {};
         this.arduino = null;
-        this.showDebug = false;
 
         this.processCommandLineArgs();
         this.loadConfig(this.args.config || 'localhost')
@@ -100,7 +99,6 @@ class Main {
         if (this.showDebug) {
             console.info('[main] initialize');
         }
-
         // start http server
         if (this.serviceConfig.httpEnabled) {
             this._httpServer = new httpServer(this.serviceConfig, this.showDebug);
@@ -117,7 +115,6 @@ class Main {
             for (const service of servicesList) {
                 const serviceClass = service[0];
                 const serviceConfig = service[1];
-                serviceConfig.swimUrl = this.serviceConfig.hostUrl;
                 this.servicesList.push(new serviceClass(serviceConfig, this._httpServer, this.showDebug, this.arduino));
             }
         }
@@ -126,8 +123,6 @@ class Main {
         for (const startingBot of botList) {
             const botClass = startingBot[0];
             const botConfig = startingBot[1];
-            botConfig.swimUrl = this.serviceConfig.hostUrl;
-            console.info(botConfig.swimUrl, this.serviceConfig.hostUrl)
             this.botList.push(new botClass(botConfig, this.showDebug, this.arduino));
         }
         

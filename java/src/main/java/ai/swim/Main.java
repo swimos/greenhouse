@@ -50,7 +50,6 @@ public class Main extends AbstractPlane {
    * @throws InterruptedException
    */
   public static void main(String[] args) throws InterruptedException, IOException {
-    System.out.println(System.getenv("CONFIG"));
     // Load any system properties from a file
     loadConfig();
 
@@ -164,16 +163,11 @@ public class Main extends AbstractPlane {
   //   }
   // }
 
-
   /**
    * Configuration Helper functions here to load recon or configuration from property
    */
   private static void loadConfig() {
-    
-    // final String propFileLocation = System.getProperty("app.config", "/raspi-app.properties");
-    final String propFilePath = System.getProperty("app.config", "/raspi-app.properties");
-    final String propFileLocation = propFilePath + System.getenv("CONFIG") + "-app.properties";
-    System.out.println("Using config file:" + propFileLocation);
+    final String propFileLocation = System.getProperty("app.config", "../config/java/localhost-app.properties");
     final File propFile = new File(propFileLocation);
     Properties props = new Properties(System.getProperties());
     try {
@@ -216,5 +210,4 @@ public class Main extends AbstractPlane {
     }
     return configPath;
   }
-
 }

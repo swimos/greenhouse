@@ -139,7 +139,6 @@ public class AggregateService extends AbstractAgent {
   @SwimLane("addBot")
   private CommandLane<Value> addBot = this.<Value>commandLane()
     .onCommand(v -> {
-      System.out.println("Aggregate addbot: " + v.toString());
       final Value host = v.get("host");
       if (host.isDefined()) {
         joinRobot.downlink(v)
@@ -181,10 +180,10 @@ public class AggregateService extends AbstractAgent {
 
       for (Map.Entry<Value, String> entry : joinRobot.entrySet()) {
         if (entry.getValue().equals("AVAILABLE")) {
-          // System.out.println("***** Task needed to work on alert on: " + n + "*****");
+          System.out.println("***** Task needed to work on alert on: " + n + "*****");
           // call addDestination in Bot to work here with String.split.get hostUri.
           command(entry.getKey().get("host").stringValue(), entry.getKey().get("node").stringValue(), "addDestination", r);
-          // System.out.println("Bot picked: " + entry.getKey().get("node").stringValue());
+          System.out.println("Bot picked: " + entry.getKey().get("node").stringValue());
           break;
         }
       }

@@ -36,9 +36,9 @@ public class SensorService extends AbstractAgent {
     .didSet((n, o) -> {
       if (!initJoin) {
         sendToDeviceBot();
-        // System.out.println("ACK: sensor int update : ");
-        // System.out.println(getProp("id"));
-        // System.out.println(n);
+        System.out.println("ACK: sensor int update : ");
+        System.out.println(getProp("id"));
+        System.out.println(n);
         initJoin = true;
       }
     })
@@ -118,7 +118,7 @@ public class SensorService extends AbstractAgent {
   @SwimLane("robotAssigned")
   ValueLane<Value> robotAssigned = this.<Value>valueLane()
     .didSet((n, o) -> {
-      // System.out.println("ACK: Robot assigned to this Sensor based on Alert: " + getProp("id").toString() + " : " + Recon.toString(n));
+      System.out.println("ACK: Robot assigned to this Sensor based on Alert: " + getProp("id").toString() + " : " + Recon.toString(n));
     });
 
   /**
@@ -143,9 +143,8 @@ public class SensorService extends AbstractAgent {
   // reset timer every time when it receive taskFinish: true and previous taskFinish: false
   private void checkWorkResult(Boolean newValue, Boolean oldValue) {
     if (newValue && !oldValue) {
-      // reset();
-      // sampleTimer = setTimer(30000, this::finishSignal);
-      finishSignal();
+      reset();
+      sampleTimer = setTimer(30000, this::finishSignal);
     }
   }
 

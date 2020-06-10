@@ -1,28 +1,26 @@
-FROM node:11-stretch
+FROM node:12-stretch
 # FROM resin/raspberrypi3-debian:stretch
 
 ENV CONFIG=localhost
 
-RUN apt-get update && apt-get install -y curl python-numpy python-pil 
+RUN apt-get update && apt-get install -y curl python-numpy python-pil apt-utils 
 WORKDIR /tmp
 
-RUN curl -LO  https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/librtimulib-dev_7.2.1-3_armhf.deb \
- && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib//librtimulib-utils_7.2.1-3_armhf.deb \
- && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/librtimulib7_7.2.1-3_armhf.deb \
- && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/python-rtimulib_7.2.1-3_armhf.deb \
- && curl -LO https://archive.raspberrypi.org/debian/pool/main/p/python-sense-hat/python-sense-hat_2.1.0-1_armhf.deb
+# RUN curl -LO  https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/librtimulib-dev_7.2.1-3_armhf.deb \
+#  && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib//librtimulib-utils_7.2.1-3_armhf.deb \
+#  && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/librtimulib7_7.2.1-3_armhf.deb \
+#  && curl -LO https://archive.raspberrypi.org/debian/pool/main/r/rtimulib/python-rtimulib_7.2.1-3_armhf.deb \
+#  && curl -LO https://archive.raspberrypi.org/debian/pool/main/p/python-sense-hat/python-sense-hat_2.1.0-1_armhf.deb
  
  
-RUN dpkg -i librtimulib-dev_7.2.1-3_armhf.deb librtimulib-utils_7.2.1-3_armhf.deb librtimulib7_7.2.1-3_armhf.deb python-rtimulib_7.2.1-3_armhf.deb python-sense-hat_2.1.0-1_armhf.deb
+# RUN dpkg -i librtimulib-dev_7.2.1-3_amd64.deb librtimulib-utils_7.2.1-3_amd64.deb librtimulib7_7.2.1-3_amd64.deb python-rtimulib_7.2.1-3_amd64.deb python-sense-hat_2.1.0-1_amd64.deb
 
 RUN rm -f /tmp/*.deb
 RUN apt-get clean
 
 WORKDIR /
 
-# # RUN /bin/bash -c 'curl -sL https://deb.nodesource.com/setup_12.x | bash -'
-# # RUN /bin/bash -c 'apt-get install nodejs -y'
-# # RUN /bin/bash -c 'apt-get update -y'
+RUN /bin/bash -c 'apt-get update -y'
 RUN apt-get update -y && \
     apt-get install -y build-essential python3 python3-pip libpython3-dev apt-utils libxml2 libxml2-dev bison flex libcdk5-dev libavahi-client-dev cmake git python-dev gcc build-essential libboost-python-dev libpython3-dev
 # RUN apt-get install -y libxml2 libxml2-dev bison flex libcdk5-dev libavahi-client-dev cmake git
@@ -31,8 +29,6 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools
 RUN pip3 install websocket-client
 RUN pip3 install sense-hat
-RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
-RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
 
 # RUN git clone https://github.com/RPi-Distro/RTIMULib/
 
@@ -59,6 +55,8 @@ COPY /javascript/httpServer/views/layouts/. /greenhouse/javascript/httpServer/vi
 WORKDIR /greenhouse/javascript/
 
 RUN /bin/bash -c 'npm install'
+RUN /bin/bash -c 'npm install -g node-gyp --unsafe-perm'
+RUN /bin/bash -c 'npm install -g serialport --unsafe-perm'
 
 RUN echo "Start ${CONFIG}"
 

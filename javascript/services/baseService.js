@@ -6,9 +6,6 @@ class BaseService {
         this.pollingTimeout = null;
         this.server = httpServer;
         this.arduino = arduino;
-        this.swimUrl = this.config.swimUrl;
-
-        console.info('service', this.config)
 
         if (this.showDebug) {
             console.info(`[BaseService] constructed`);

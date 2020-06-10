@@ -24,8 +24,8 @@ class SenseHatBot extends BaseBot {
      * @param {object} botConfig - bot configuration loaded from config file
      * @param {boolean} showDebug - toggle debug output
      */
-    constructor(botConfig, showDebug = false, arduino = null) {
-        super(botConfig, showDebug, arduino);
+    constructor(botConfig, showDebug = false) {
+        super(botConfig, showDebug);
 
         this.botName = botConfig.botName;
         this.showDebug = showDebug;
@@ -119,7 +119,7 @@ class SenseHatBot extends BaseBot {
                 this.joystickDirection = msg.value
             });
 
-        this.ledBridge = new PythonWrapper('./../hardware/ledMatrixBridge.py', this.showDebug, this.swimUrl);
+        this.ledBridge = new PythonWrapper('./../hardware/ledMatrixBridge.py', this.showDebug);
 
         if (this.showDebug) {
             console.info(`[SenseHatBot] constructed`);

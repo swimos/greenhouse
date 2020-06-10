@@ -44,7 +44,7 @@ To build Docker images:
 ### Running Docker Images
 All command line parameters are required with the exception of --privileged which is only required for SenseHat so that python can communicate with the the SenseHat hardware. You can debug an image by adding --entrypoint=/bin/bash. This will run the image and drop you into the bash shell of the running image. From there you can run npm, gradle, or python directly. Just remember that changes made inside an image will be be saved between runs.
 1. Running Java/Swim Docker Image:
-    * `docker run -it --env CONFIG=raspi5 --publish 5620:5620 <path-to-your-repo>:greenhouse-node-v1`
+    * `docker run -it --env CONFIG=raspi5 --publish 9001:9001 <path-to-your-repo>:greenhouse-node-v1`
 2. Running NodeJS+Python Docker Image:
     * `docker run -it --env CONFIG=raspi5 --privileged --publish 8080:8080  <path-to-your-repo>:greenhouse-node-v1`
 

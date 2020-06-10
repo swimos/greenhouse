@@ -19,8 +19,8 @@ RUN echo "Build For $CONFIG"
 
 RUN /bin/bash -c './gradlew build -Pconfig=$CONFIG'
 RUN /bin/bash -c 'mkdir -p dist'
-RUN /bin/bash -c 'tar -xf build/distributions/java-1.0.tar -C dist/'
+RUN /bin/bash -c 'tar -xf build/distributions/java-1.0.1.tar -C dist/'
 
-ENTRYPOINT ["./dist/java-1.0/bin/java", "-Pconfig=$CONFIG"]
+ENTRYPOINT ["./dist/java-1.0.1/bin/java", "-Pconfig=$CONFIG"]
 
 EXPOSE 5620

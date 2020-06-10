@@ -81,9 +81,8 @@ afterEvaluate {
     dependsOn jar
     doFirst {
       jvmArgs += [
-        '-Dapp.config='+projectDir.parent+'/config/java/',
-        '--module-path', files(configurations.runtimeClasspath, jar.archivePath).asPath,
-        '--module', "${moduleName}/${mainClassName}",
+        '--module-path', files(configurations.runtimeClasspath, jar.archiveFile).asPath,
+        '--module', "${moduleName}/${mainClassName}"
       ]
       classpath = files()
     }
@@ -94,7 +93,7 @@ afterEvaluate {
     doFirst {
       classpath = files()
       defaultJvmOpts = [
-        '-Dapp.config='+projectDir.parent+'/config/java/',
+        '-Dswim.config=/server.recon',
         '--module-path', 'APP_HOME_LIBS',
         '--module', "${moduleName}/${mainClassName}"
       ]
@@ -109,8 +108,5 @@ afterEvaluate {
       batFile.text = batContent.replaceFirst('APP_HOME_LIBS', Matcher.quoteReplacement('%APP_HOME%\\lib'))
     }
   }
-}
 
-mainClassName = 'ai.swim.Main'
-applicationDefaultJvmArgs = ["-Dapp.config="+projectDir.parent+"/config/java/"]
-//applicationDefaultJvmArgs = ["-Dapp.config="+projectDir.parent+"/config/java/"+hostname+"-app.properties", "-Dcom.sun.management.jmxremote.port=3333", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-Dcom.sun.management.jmxremote.local.only=false", "-Dcom.sun.management.jmxremote.port=1098", "-Djava.rmi.server.hostname=192.168.0.100"]
+}

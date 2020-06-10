@@ -65,7 +65,7 @@ public class DeviceService extends AbstractAgent {
   @SwimLane("joystickState")
   ValueLane<String> joystickState = this.<String>valueLane()
     .didSet((n, o) -> {
-      // System.out.println("joystickState: " + n);
+      System.out.println("joystickState: " + n);
     });
  
   /**
@@ -87,7 +87,7 @@ public class DeviceService extends AbstractAgent {
   @SwimLane("joystickDirection")
   ValueLane<String> joystickDirection = this.<String>valueLane()
     .didSet((n, o) -> {
-      // System.out.println("joystickDirection: " + n);
+      System.out.println("joystickDirection: " + n);
     });
  
   /**
@@ -161,7 +161,7 @@ public class DeviceService extends AbstractAgent {
   @SwimLane("assignedRobot")
   MapLane<String, Value> assignedRobot = this.<String, Value>mapLane()
     .didUpdate((k, n, o) -> {
-      // System.out.println("Device Assigned Robot join update: " + k + ", " + Recon.toString(n));
+      System.out.println("Device Assigned Robot join update: " + k + ", " + Recon.toString(n));
       command(k, "robotAck", n);
     });
 
@@ -209,7 +209,7 @@ public class DeviceService extends AbstractAgent {
   private CommandLane<Value> taskFinish = this.<Value>commandLane()
     .onCommand(v -> {
       String key = "/sensor/" + v.stringValue();
-      // System.out.println("***** Task Finished on: " + key + "*****");
+      System.out.println("***** Task Finished on: " + key + "*****");
       command(assignedRobot.get(key).get("robotHost").stringValue(),
         assignedRobot.get(key).get("robotNode").stringValue(),"taskFinish", Bool.from(true));
       assignedRobot.remove(key);
